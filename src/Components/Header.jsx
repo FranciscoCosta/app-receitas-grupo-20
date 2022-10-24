@@ -1,27 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import perfil from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
 
 function Header({ title, perfilBool, searchBool }) {
+  const [inputSearch, setinputSearch] = useState(false);
   return (
     <div className="Header">
-      {perfilBool && <img
-        src={ perfil }
-        alt="perfil-icon"
-        data-testid="profile-top-btn"
-      />}
-      {searchBool && <img
-        src={ search }
-        alt="search-icon"
-        data-testid="search-top-btn"
-      />}
-      <h1
-        data-testid="page-title"
-      >
-        {title}
+      {perfilBool && (
+        <Link to="/profile">
+          <img src={ perfil } alt="perfil-icon" data-testid="profile-top-btn" />
+        </Link>
+      )}
 
-      </h1>
+      {searchBool && (
+        <button type="button" onClick={ () => { setinputSearch(!inputSearch); } }>
+          {(inputSearch) && <input data-testid="search-input" />}
+          <img src={ search } alt="search-icon" data-testid="search-top-btn" />
+        </button>
+      )}
+      <h1 data-testid="page-title">{title}</h1>
     </div>
   );
 }

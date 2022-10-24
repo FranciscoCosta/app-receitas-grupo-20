@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from '../../Components/Header';
 
 function Meals() {
@@ -10,3 +11,9 @@ function Meals() {
 }
 
 export default Meals;
+
+Meals.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}.isRequired;
