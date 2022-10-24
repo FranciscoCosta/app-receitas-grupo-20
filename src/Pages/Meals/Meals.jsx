@@ -3,8 +3,8 @@ import Header from '../../Components/Header';
 
 function Meals() {
   return (
-    <div>
-      <Header />
+    <div className="Meals">
+      <Header title="Meals" perfilBool searchBool />
     </div>
   );
 }
