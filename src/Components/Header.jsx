@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import perfil from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 function Header({ title, perfilBool, searchBool }) {
   const [inputSearch, setinputSearch] = useState(false);
@@ -16,7 +17,7 @@ function Header({ title, perfilBool, searchBool }) {
 
       {searchBool && (
         <button type="button" onClick={ () => { setinputSearch(!inputSearch); } }>
-          {(inputSearch) && <input data-testid="search-input" />}
+          {(inputSearch) && <SearchBar />}
           <img src={ search } alt="search-icon" data-testid="search-top-btn" />
         </button>
       )}
