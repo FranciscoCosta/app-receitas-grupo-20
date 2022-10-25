@@ -1,6 +1,6 @@
 .Footer {
   background-color: red;
+  bottom: 0;
   position: fixed;
-  top: 100%;
   width: 100%;
 }

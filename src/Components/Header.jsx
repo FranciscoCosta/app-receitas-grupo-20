@@ -15,15 +15,17 @@ function Header({ title, perfilBool, searchBool, type }) {
         </Link>
       )}
 
-      {searchBool && (inputSearch) && <SearchBar type={ type } />}
-      <button
-        type="button"
-        onClick={ () => { setinputSearch(!inputSearch); } }
-        style={ { background: 'red' } }
-      >
-        <img src={ search } alt="search-icon" data-testid="search-top-btn" />
-      </button>
-
+      { (inputSearch) && <SearchBar type={ type } />}
+      {searchBool
+      && (
+        <button
+          type="button"
+          onClick={ () => { setinputSearch(!inputSearch); } }
+          style={ { background: 'red' } }
+        >
+          <img src={ search } alt="search-icon" data-testid="search-top-btn" />
+        </button>
+      ) }
       <h1 data-testid="page-title">{title}</h1>
     </div>
   );
