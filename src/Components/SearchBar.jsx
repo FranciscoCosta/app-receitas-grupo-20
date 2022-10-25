@@ -1,41 +1,67 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { Context } from '../Context/Context';
 
-function SearchBar() {
+function SearchBar(type) {
+  const { handleCallApi } = useContext(Context);
+  const [raidoInput, setraidoInput] = useState('ingredient');
+  const [search, setsearch] = useState('');
+
+  const handleInputSearch = (event) => {
+    const { value } = event.target;
+    setsearch(value);
+  };
+  const { type: typeOfApiCall } = type;
   return (
     <div className="SearchBar">
       <div className="SearchBar__container">
-        <form className="SearchBar__form" data-testid="search-input">
+        <form className="SearchBar__form">
           <label htmlFor="search-ingredient">
             Ingredient
             <input
               type="radio"
-              name="search-ingredient"
+              name="search"
               data-testid="ingredient-search-radio"
               value="ingredient"
-            //   onChange={ handleSort }
+              onClick={ () => setraidoInput('ingredient') }
             />
           </label>
           <label htmlFor="search-name">
             Name
             <input
               type="radio"
-              name="search-name"
+              name="search"
               data-testid="name-search-radio"
               value="name"
-            //   onChange={ handleSort }
+              onClick={ () => setraidoInput('name') }
             />
           </label>
           <label htmlFor="search-first-letter">
             First-letter
             <input
               type="radio"
-              name="search-first-letter"
+              name="search"
               data-testid="first-letter-search-radio"
               value="first-letter"
-            //   onChange={ handleSort }
+              onClick={ () => setraidoInput('first-letter') }
             />
           </label>
-          <button type="button" data-testid="exec-search-btn">Search</button>
+          <input
+            type="text"
+            className="SearchBar__input"
+            placeholder="Search"
+            data-testid="search-input"
+            required
+            name="search"
+            onChange={ handleInputSearch }
+            value={ search }
+          />
+          <button
+            type="button"
+            data-testid="exec-search-btn"
+            onClick={ () => handleCallApi(raidoInput, typeOfApiCall, search) }
+          >
+            Search
+          </button>
         </form>
       </div>
     </div>
