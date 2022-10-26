@@ -33,7 +33,7 @@ function Recipes({ history, page }) {
         <div
           role="button"
           tabIndex="0"
-          onKeyPress={ () => console.log('Lint') }
+          onKeyPress={ () => {} }
           className={ `${key}__card-info` }
           data-testid={ `${index}-recipe-card` }
           key={ curr[`id${key}`] }

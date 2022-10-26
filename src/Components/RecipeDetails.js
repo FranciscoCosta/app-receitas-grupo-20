@@ -8,37 +8,43 @@ function RecipeDetails({ page }) {
   const [pages, setpages] = useState('');
   const { id } = useParams();
 
-  const apis = useMemo(() => ({
-    meals: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
-    drinks: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
-  }), [id]);
+  const apis = useMemo(
+    () => ({
+      meals: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
+      drinks: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
+    }),
+    [id],
+  );
 
-  const fetchItem = useMemo(() => async () => {
-    const url = apis[page];
-    const response = await fetch(url);
-    const item = await response.json();
-    console.log(item);
-    setitemPage(item[page][0]);
-    if (page === 'meals') {
-      setpages('Meal');
-      const values = (Object.values(item[page][0]));
-      const ingridientsArray = values.slice(9, 28);
-      const valuesArray = values.splice(29, 49);
-      const finalArray = ingridientsArray.map((ing, index) => [ing, valuesArray[index]]);
-      setItemIngridients(finalArray);
-    } else {
-      setpages('Drink');
-      const values = (Object.values(item[page][0]));
+  const fetchItem = useMemo(
+    () => async () => {
+      const url = apis[page];
+      const response = await fetch(url);
+      const item = await response.json();
+      console.log(item);
+      setitemPage(item[page][0]);
+      if (page === 'meals') {
+        setpages('Meal');
+      } else {
+        setpages('Drink');
+      }
+      const values = Object.entries(item[page][0]);
       console.log(values, 'array incial');
-      const ingridientsArray = values.slice(17, 31);
+      const ingridientsArray = values.filter(
+        ([key, value]) => key.includes('strIngredient') && value,
+      );
       console.log(ingridientsArray, 'NOMES-INGREDITENTS');
-      const valuesArray = values.splice(32, 38);
+      const valuesArray = values.filter(
+        ([key, value]) => key.includes('strMeasure') && (value || []),
+      );
       console.log(valuesArray, 'valores-INGREDITENTes');
-      const finalArray = ingridientsArray.map((ing, index) => ing !== null
-       && [ing, valuesArray[index]]).filter((e) => e[0] !== undefined);
+      const finalArray = ingridientsArray
+        .map((ing, index) => ing !== null && [ing, valuesArray[index]])
+        .filter((e) => e[0] !== undefined);
       setItemIngridients(finalArray);
-    }
-  }, [apis, page]);
+    },
+    [apis, page],
+  );
 
   useEffect(() => {
     fetchItem();
@@ -51,31 +57,26 @@ function RecipeDetails({ page }) {
         alt={ Item[`str${pages}`] }
         data-testid="recipe-photo"
       />
-      <h2 data-testid="recipe-title">
-        { Item[`str${pages}`] }
-      </h2>
-      {(page === 'meals')
-        ? (
-          <h4 data-testid="recipe-category">
-            {Item.strCategory}
-          </h4>)
-        : (
-          <h4 data-testid="recipe-category">
-            {Item.strCategory}
-            {Item.strAlcoholic}
-          </h4>) }
-      {ItemIngridients.filter((ing) => ing !== ['', ' ']).map((name, index) => (
+      <h2 data-testid="recipe-title">{Item[`str${pages}`]}</h2>
+      {page === 'meals' ? (
+        <h4 data-testid="recipe-category">{Item.strCategory}</h4>
+      ) : (
+        <h4 data-testid="recipe-category">
+          {Item.strCategory}
+          {Item.strAlcoholic}
+        </h4>
+      )}
+      {console.log(ItemIngridients, 'FINALLLLL')}
+      {ItemIngridients.map(([ingredient, value], index) => (
         <p
-          key={ `${name}-${index}` }
+          key={ `${value[1]}-${index}` }
           data-testid={ `${index}-ingredient-name-and-measure` }
         >
-          {`${name[0]} ${name[1]}`}
-
+          {`${ingredient[1]} ${value[1]}`}
         </p>
       ))}
       <p data-testid="instructions">{Item.strInstructions}</p>
-      {(page === 'meals')
-      && (
+      {page === 'meals' && (
         <div>
           <iframe
             src={ Item.strYoutube }
@@ -84,7 +85,8 @@ function RecipeDetails({ page }) {
             title="video"
             data-testid="video"
           />
-        </div>)}
+        </div>
+      )}
     </div>
   );
 }

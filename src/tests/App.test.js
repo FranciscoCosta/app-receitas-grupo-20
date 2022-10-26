@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { findByTestId, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import { Meals } from '../Pages';
@@ -140,21 +140,43 @@ describe('Footer component tests', () => {
     expect(pathname).toBe('/drinks');
   });
 
-  test('Test if only 1 element is called goes to page details`', () => {
+  test('Test if only 1 element is called goes to page details`', async () => {
     const { history } = renderWithRouter(
       <Provider>
-        <Meals />
+        <App />
       </Provider>,
+      ['/meals'],
     );
+    console.log(history);
+    const searchBtn = screen.getByTestId('search-top-btn');
+    userEvent.click(searchBtn);
     const inputRadioName = screen.getByTestId('name-search-radio');
     const btnCall = screen.getByTestId('exec-search-btn');
     const searchInput = screen.getByTestId('search-input');
 
-    userEvent.type(searchInput, 'Arrabiata');
     userEvent.click(inputRadioName);
+    userEvent.type(searchInput, 'Arrabiata');
     userEvent.click(btnCall);
 
-    const { pathname } = history.location;
-    expect(pathname).toBe('/meals/52771');
+    await waitFor(() => {
+      const { pathname } = history.location;
+      expect(pathname).toBe('/meals/52771');
+    });
   });
+  // test('Test if only 1 element is called goes to page details`', async () => {
+  //   const { history } = renderWithRouter(
+  //     <Provider>
+  //       <App />
+  //     </Provider>,
+  //     ['/meals'],
+  //   );
+  //   const firstElement = await findByTestId('0-recipe-card', {}, { timeout: 4000 });
+  //   expect(firstElement).toBeInTheDocument();
+
+  //   userEvent.click(firstElement);
+  //   await waitFor(() => {
+  //     const { pathname } = history.location;
+  //     expect(pathname).toBe('/meals/52977');
+  //   });
+  // });
 });
