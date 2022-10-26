@@ -16,34 +16,37 @@ function SearchBar(type) {
       <div className="SearchBar__container">
         <form className="SearchBar__form">
           <label htmlFor="search-ingredient">
-            Ingredient
             <input
               type="radio"
+              id="search-ingredient"
               name="search"
               data-testid="ingredient-search-radio"
               value="ingredient"
               onClick={ () => setraidoInput('ingredient') }
             />
+            Ingredient
           </label>
           <label htmlFor="search-name">
-            Name
             <input
               type="radio"
+              id="search-name"
               name="search"
               data-testid="name-search-radio"
               value="name"
               onClick={ () => setraidoInput('name') }
             />
+            Name
           </label>
           <label htmlFor="search-first-letter">
-            First-letter
             <input
               type="radio"
+              id="search-first-letter"
               name="search"
               data-testid="first-letter-search-radio"
               value="first-letter"
               onClick={ () => setraidoInput('first-letter') }
             />
+            First-letter
           </label>
           <input
             type="text"

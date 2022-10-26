@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import Recipes from '../../Components/Recipes';
+import Category from '../../Components/Category';
 
 function Drinks({ history }) {
   return (
     <div className="Drinks">
       <Header title="Drinks" perfilBool searchBool type="drinks" />
+      <Category page="drinks" />
       <Recipes page="drinks" history={ history } />
       <Footer />
     </div>
