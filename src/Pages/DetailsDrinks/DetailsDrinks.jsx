@@ -1,9 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import RecipeDetails from '../../Components/RecipeDetails';
 
-function DetailsDrinks() {
+function DetailsDrinks({ history }) {
   return (
-    <div>DetailsDrinks</div>
+    <div className="DeatailsMeals">
+      <RecipeDetails page="drinks" history={ history } />
+    </div>
   );
 }
+
+DetailsDrinks.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}.isRequired;
 
 export default DetailsDrinks;
