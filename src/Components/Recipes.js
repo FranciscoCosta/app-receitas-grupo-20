@@ -17,7 +17,7 @@ function Recipes({ history, page }) {
 
   useEffect(() => {
     const products = dataApi[`${page}`];
-    const value = (products === null || products === undefined) ? [] : products;
+    const value = products === null || products === undefined ? [] : products;
     console.log(value, 'value', products, 'products');
     if (value.length === 1 && !categorySearch) {
       const idProduto = Object.values(products[0])[0];
@@ -31,9 +31,13 @@ function Recipes({ history, page }) {
     <div className={ `${key}__cards` }>
       {produtos.map((curr, index) => (
         <div
+          role="button"
+          tabIndex="0"
+          onKeyPress={ () => console.log('Lint') }
           className={ `${key}__card-info` }
           data-testid={ `${index}-recipe-card` }
           key={ curr[`id${key}`] }
+          onClick={ () => history.push(`/${page}/${Object.values(curr)[0]}`) }
         >
           <img
             className={ `${key}__card-img` }
@@ -41,10 +45,7 @@ function Recipes({ history, page }) {
             alt={ curr[`str${key}`] }
             data-testid={ `${index}-card-img` }
           />
-          <p
-            className={ `${key}__card-tags` }
-            data-testid={ `${index}-card-name` }
-          >
+          <p className={ `${key}__card-tags` } data-testid={ `${index}-card-name` }>
             {curr[`str${key}`]}
           </p>
         </div>

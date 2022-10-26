@@ -91,7 +91,11 @@ describe('Header component tests', () => {
     userEvent.click(inputRadioIngredient);
     userEvent.click(btnCall);
 
-    const card0 = await screen.findByText(/Brown Stew Chicken/i, {}, { timeout: 4000 });
+    const card0 = await screen.findByText(
+      /Brown Stew Chicken/i,
+      {},
+      { timeout: 4000 },
+    );
     expect(card0).toBeInTheDocument();
   });
 });
@@ -134,5 +138,23 @@ describe('Footer component tests', () => {
 
     const { pathname } = history.location;
     expect(pathname).toBe('/drinks');
+  });
+
+  test('Test if only 1 element is called goes to page details`', () => {
+    const { history } = renderWithRouter(
+      <Provider>
+        <Meals />
+      </Provider>,
+    );
+    const inputRadioName = screen.getByTestId('name-search-radio');
+    const btnCall = screen.getByTestId('exec-search-btn');
+    const searchInput = screen.getByTestId('search-input');
+
+    userEvent.type(searchInput, 'Arrabiata');
+    userEvent.click(inputRadioName);
+    userEvent.click(btnCall);
+
+    const { pathname } = history.location;
+    expect(pathname).toBe('/meals/52771');
   });
 });
