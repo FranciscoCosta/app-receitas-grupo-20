@@ -5,28 +5,26 @@ export const Context = createContext();
 
 function Provider({ children }) {
   const [dataApi, setdataApi] = useState([]);
-  const [categorySearch, setCategorySearch] = useState(false);
+  Provider.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
 
   const fetchApi = async (url) => {
     const response = await fetch(url);
     const json = await response.json();
     return response.ok && Promise.resolve(json);
   };
-  const handleCallApi = async (type, typeOfApiCall, search = '') => {
+  const handleCallApi = async (type, typeOfApiCall, search) => {
     const apiObj = {
       meals: {
         ingredient: `https://www.themealdb.com/api/json/v1/1/filter.php?i=${search}`,
         name: `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`,
         'first-letter': `https://www.themealdb.com/api/json/v1/1/search.php?f=${search}`,
-        category: `https://www.themealdb.com/api/json/v1/1/filter.php?c=${search}`,
-        default: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
       },
       drinks: {
         ingredient: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${search}`,
         name: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`,
         'first-letter': `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${search}`,
-        category: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${search}`,
-        default: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
       },
     };
     const url = apiObj[typeOfApiCall][type];
@@ -34,10 +32,10 @@ function Provider({ children }) {
       global.alert('Your search must have only 1 (one) character');
     } else {
       const data = await fetchApi(url);
+      setdataApi(data);
       if (data[typeOfApiCall] === null) {
         global.alert('Sorry, we haven\'t found any recipes for these filters.');
       }
-      setdataApi(data);
     }
   };
   // console.log(type, typeOfApiCall, search);
@@ -87,17 +85,10 @@ function Provider({ children }) {
     () => ({
       handleCallApi,
       dataApi,
-      categorySearch,
-      setCategorySearch,
     }),
-    [dataApi, categorySearch, setCategorySearch],
+    [dataApi],
   );
 
   return <Context.Provider value={ context }>{children}</Context.Provider>;
 }
-
-Provider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export default Provider;
