@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Context } from '../Context/Context';
 
@@ -7,23 +7,23 @@ function Category({ page }) {
 
   const { handleCallApi, setCategorySearch, categorySearch } = useContext(Context);
 
-  const apis = {
+  const apis = useMemo(() => ({
     meals: 'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
     drinks: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list',
-  };
+  }), []);
 
-  const fetchCategory = async () => {
+  const fetchCategory = useMemo(() => async () => {
     const CATEGORY_LIMIT = 5;
     const url = apis[page];
     const response = await fetch(url);
     const categorys = await response.json();
     const categoria5 = categorys[page].slice(0, CATEGORY_LIMIT);
     setCategorias(categoria5);
-  };
+  }, [apis, page]);
 
   useEffect(() => {
     fetchCategory();
-  }, []);
+  }, [fetchCategory]);
 
   const handleClick = ({ target: { id } }) => {
     if (!categorySearch) {

@@ -13,7 +13,7 @@ function Recipes({ history, page }) {
 
   useEffect(() => {
     handleCallApi('default', page);
-  }, []);
+  }, [handleCallApi, page]);
 
   useEffect(() => {
     const products = dataApi[`${page}`];
@@ -26,7 +26,7 @@ function Recipes({ history, page }) {
       const newValue = value.slice(0, LIMIT_ELEMENTS);
       setProdutos(newValue);
     }
-  }, [dataApi, history, page]);
+  }, [dataApi, history, page, categorySearch]);
   return (
     <div className={ `${key}__cards` }>
       {produtos.map((curr, index) => (

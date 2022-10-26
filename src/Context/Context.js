@@ -12,7 +12,8 @@ function Provider({ children }) {
     const json = await response.json();
     return response.ok && Promise.resolve(json);
   };
-  const handleCallApi = async (type, typeOfApiCall, search = '') => {
+
+  const handleCallApi = useMemo(() => async (type, typeOfApiCall, search = '') => {
     const apiObj = {
       meals: {
         ingredient: `https://www.themealdb.com/api/json/v1/1/filter.php?i=${search}`,
@@ -39,7 +40,7 @@ function Provider({ children }) {
       }
       setdataApi(data);
     }
-  };
+  }, []);
   // console.log(type, typeOfApiCall, search);
   // if (typeOfApiCall === 'Meals') {
   //   if (type === 'ingredient') {
@@ -90,7 +91,7 @@ function Provider({ children }) {
       categorySearch,
       setCategorySearch,
     }),
-    [dataApi, categorySearch, setCategorySearch],
+    [dataApi, categorySearch, setCategorySearch, handleCallApi],
   );
 
   return <Context.Provider value={ context }>{children}</Context.Provider>;
