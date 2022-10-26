@@ -13,12 +13,12 @@ function Recipes({ history, page }) {
 
   useEffect(() => {
     handleCallApi('default', page);
-  }, [handleCallApi, page]);
+  }, [page, handleCallApi]);
 
   useEffect(() => {
     const products = dataApi[`${page}`];
-    console.log(products);
     const value = (products === null || products === undefined) ? [] : products;
+    console.log(value, 'value', products, 'products');
     if (value.length === 1 && !categorySearch) {
       const idProduto = Object.values(products[0])[0];
       history.push(`/${page}/${idProduto}`);
@@ -35,18 +35,18 @@ function Recipes({ history, page }) {
           data-testid={ `${index}-recipe-card` }
           key={ curr[`id${key}`] }
         >
-          <p
-            className={ `${key}__card-tags` }
-            data-testid={ `${index}-card-name` }
-          >
-            {curr[`str${key}`]}
-          </p>
           <img
             className={ `${key}__card-img` }
             src={ curr[`str${key}Thumb`] }
             alt={ curr[`str${key}`] }
             data-testid={ `${index}-card-img` }
           />
+          <p
+            className={ `${key}__card-tags` }
+            data-testid={ `${index}-card-name` }
+          >
+            {curr[`str${key}`]}
+          </p>
         </div>
       ))}
     </div>

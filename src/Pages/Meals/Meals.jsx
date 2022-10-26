@@ -7,7 +7,6 @@ import Recipes from '../../Components/Recipes';
 import Category from '../../Components/Category';
 
 function Meals({ history }) {
-  console.log('oi');
   return (
     <div className="Meals">
       <Header title="Meals" perfilBool searchBool type="meals" />
