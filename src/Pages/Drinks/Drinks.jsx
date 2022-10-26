@@ -1,12 +1,26 @@
 import React from 'react';
-import Header from '../../Components/Header';
+import PropTypes from 'prop-types';
 
-function Drinks() {
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import Recipes from '../../Components/Recipes';
+import Category from '../../Components/Category';
+
+function Drinks({ history }) {
   return (
     <div className="Drinks">
-      <Header title="Drinks" perfilBool searchBool />
+      <Header title="Drinks" perfilBool searchBool type="drinks" />
+      <Category page="drinks" />
+      <Recipes page="drinks" history={ history } />
+      <Footer />
     </div>
   );
 }
+
+Drinks.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}.isRequired;
 
 export default Drinks;
