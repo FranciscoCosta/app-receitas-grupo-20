@@ -5,7 +5,6 @@ function Login({ history }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setvalid] = useState(false);
-  const [search, setsearch] = useState('');
 
   const handleChange = (event) => {
     const { name, value } = event.target;

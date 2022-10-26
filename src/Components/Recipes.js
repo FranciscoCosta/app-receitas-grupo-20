@@ -5,24 +5,28 @@ import { Context } from '../Context/Context';
 
 function Recipes({ history, page }) {
   const LIMIT_ELEMENTS = 12;
-  const { dataApi } = useContext(Context);
+  const { dataApi, handleCallApi, categorySearch } = useContext(Context);
 
   const [produtos, setProdutos] = useState([]);
 
   const key = page === 'meals' ? 'Meal' : 'Drink';
 
   useEffect(() => {
+    handleCallApi('default', page);
+  }, [page, handleCallApi]);
+
+  useEffect(() => {
     const products = dataApi[`${page}`];
     const value = (products === null || products === undefined) ? [] : products;
     console.log(value, 'value', products, 'products');
-    if (value.length === 1) {
+    if (value.length === 1 && !categorySearch) {
       const idProduto = Object.values(products[0])[0];
       history.push(`/${page}/${idProduto}`);
     } else {
       const newValue = value.slice(0, LIMIT_ELEMENTS);
       setProdutos(newValue);
     }
-  }, [dataApi, history, page]);
+  }, [dataApi, history, page, categorySearch]);
   return (
     <div className={ `${key}__cards` }>
       {produtos.map((curr, index) => (
