@@ -1,5 +1,5 @@
 import React from 'react';
-import { findByTestId, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import { Meals } from '../Pages';
@@ -163,20 +163,40 @@ describe('Footer component tests', () => {
       expect(pathname).toBe('/meals/52771');
     });
   });
-  // test('Test if only 1 element is called goes to page details`', async () => {
-  //   const { history } = renderWithRouter(
-  //     <Provider>
-  //       <App />
-  //     </Provider>,
-  //     ['/meals'],
-  //   );
-  //   const firstElement = await findByTestId('0-recipe-card', {}, { timeout: 4000 });
-  //   expect(firstElement).toBeInTheDocument();
+  test('Test if only 1 element is called goes to page details`', async () => {
+    const { history } = renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+      ['/meals'],
+    );
+    const firstElement = await screen.findByTestId('0-recipe-card', {}, { timeout: 4000 });
+    expect(firstElement).toBeInTheDocument();
 
-  //   userEvent.click(firstElement);
-  //   await waitFor(() => {
-  //     const { pathname } = history.location;
-  //     expect(pathname).toBe('/meals/52977');
-  //   });
-  // });
+    userEvent.click(firstElement);
+    await waitFor(() => {
+      const { pathname } = history.location;
+      expect(pathname).toBe('/meals/52977');
+    });
+  });
+  test('Test if meals route is render with key Meal`', async () => {
+    renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+      ['/meals'],
+    );
+    const divDrinks = await screen.findByTestId('Meal__cards', {}, { timeout: 4000 });
+    expect(divDrinks).toBeInTheDocument();
+  });
+  test('Test if drinks route is render with key Drink', async () => {
+    renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+      ['/drinks'],
+    );
+    const divDrinks = await screen.findByTestId('Drink__cards', {}, { timeout: 4000 });
+    expect(divDrinks).toBeInTheDocument();
+  });
 });
