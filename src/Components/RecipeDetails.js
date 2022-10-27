@@ -54,7 +54,7 @@ function RecipeDetails({ page }) {
         .filter((e) => e[0] !== undefined);
       setItemIngridients(finalArray);
     },
-    [apis, page],
+    [apis, page, notPages],
   );
 
   const fetchRecomendations = useMemo(() => async () => {
