@@ -47,7 +47,6 @@ function RecipeDetails({ page, notPages, history }) {
         setpages('Drink');
         setKey('Meal');
       }
-      console.log(notPages);
       const values = Object.entries(item[page][0]);
       const ingridientsArray = values.filter(
         ([key, value]) => key.includes('strIngredient') && value,
@@ -60,7 +59,7 @@ function RecipeDetails({ page, notPages, history }) {
         .filter((e) => e[0] !== undefined);
       setItemIngridients(finalArray);
     },
-    [apis, page, keys],
+    [apis, page],
   );
 
   const handleCopied = () => {
