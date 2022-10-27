@@ -1,19 +1,23 @@
+* {
+  width: 320px;
+}
+
 .carousel-container {
   background-color: aqua;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 50rem;
+  width: 360px;
   height: 200px;
-  gap: 13rem;
+  gap: 6rem;
   overflow-x: auto;
 }
 .Item__Container-img {
   border: 2px solid red;
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 100px;
 }
 
 .Item__Container-img img {

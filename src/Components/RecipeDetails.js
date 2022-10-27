@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './RecipeDetails.css';
 
-function RecipeDetails({ page }) {
+function RecipeDetails({ page, notPages }) {
   const [Item, setitemPage] = useState({});
   const [ItemIngridients, setItemIngridients] = useState([]);
   const [recomendation, setrecomendation] = useState([]);
   const [loading, setloading] = useState(false);
-  const [notPages, setnotPages] = useState('');
+  const [keys, setKey] = useState('');
   const [pages, setpages] = useState('');
   const [recomendationP, setrecomendationP] = useState('');
   const { id } = useParams();
@@ -36,10 +36,10 @@ function RecipeDetails({ page }) {
       setitemPage(item[page][0]);
       if (page === 'meals') {
         setpages('Meal');
-        setnotPages('drinks');
+        setKey('Drink');
       } else {
         setpages('Drink');
-        setnotPages('meals');
+        setKey('Meal');
       }
       console.log(notPages);
       const values = Object.entries(item[page][0]);
@@ -54,7 +54,7 @@ function RecipeDetails({ page }) {
         .filter((e) => e[0] !== undefined);
       setItemIngridients(finalArray);
     },
-    [apis, page],
+    [apis, page, keys],
   );
 
   const fetchRecomendations = useMemo(() => async () => {
@@ -63,7 +63,8 @@ function RecipeDetails({ page }) {
     const response = await fetch(url);
     const result = await response.json();
     console.log(notPages);
-    const values = result[`${notPages}`];
+    const values = result[notPages];
+    console.log(result[notPages]);
     const newValue = values.slice(0, magicNumber);
     setrecomendation(newValue);
     if (page === 'meals') {
@@ -72,12 +73,12 @@ function RecipeDetails({ page }) {
       setrecomendationP('Meal');
     }
     setloading(true);
-  }, [apisRecomendation, page]);
+  }, [apisRecomendation, page, notPages]);
 
   useEffect(() => {
     fetchItem();
     fetchRecomendations();
-  }, [fetchItem, fetchRecomendations]);
+  }, [fetchItem, fetchRecomendations, keys]);
 
   return (
     <div className="Item-Details">
@@ -127,7 +128,14 @@ function RecipeDetails({ page }) {
                 className="card"
                 key={ `${index}-${recomend[`id${recomendationP}`]}` }
               >
-                <div className="Item__Container-img">
+                <h1
+                  data-testid={ `${index}-recommendation-title` }
+                >
+                  {recomend[`str${keys}`]}
+                </h1>
+                <div
+                  className="Item__Container-img"
+                >
                   <img src={ recomend[`str${recomendationP}Thumb`] } alt="teste" />
                 </div>
               </div>

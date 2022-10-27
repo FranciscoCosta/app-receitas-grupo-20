@@ -5,7 +5,7 @@ import RecipeDetails from '../../Components/RecipeDetails';
 function DetailsMeals({ history }) {
   return (
     <div className="DeatailsMeals">
-      <RecipeDetails page="meals" history={ history } />
+      <RecipeDetails page="meals" history={ history } notPages="drinks" />
     </div>
   );
 }
