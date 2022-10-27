@@ -2,9 +2,15 @@ import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './RecipeDetails.css';
+import copy from 'clipboard-copy';
+import Share from '../images/shareIcon.svg';
 
-function RecipeDetails({ page, notPages }) {
+function RecipeDetails({ page, notPages, history }) {
   const [Item, setitemPage] = useState({});
+  const { location: { pathname } } = history;
+  console.log(pathname, 'pathname');
+  const [copied, setcopied] = useState(false);
+  const [favorite, setfavorite] = useState([]);
   const [ItemIngridients, setItemIngridients] = useState([]);
   const [recomendation, setrecomendation] = useState([]);
   const [loading, setloading] = useState(false);
@@ -57,23 +63,46 @@ function RecipeDetails({ page, notPages }) {
     [apis, page, keys],
   );
 
-  const fetchRecomendations = useMemo(() => async () => {
-    const magicNumber = 6;
-    const url = apisRecomendation[page];
-    const response = await fetch(url);
-    const result = await response.json();
-    console.log(notPages);
-    const values = result[notPages];
-    console.log(result[notPages]);
-    const newValue = values.slice(0, magicNumber);
-    setrecomendation(newValue);
-    if (page === 'meals') {
-      setrecomendationP('Drink');
-    } else {
-      setrecomendationP('Meal');
-    }
-    setloading(true);
-  }, [apisRecomendation, page, notPages]);
+  const handleCopied = () => {
+    copy(`http://localhost:3000${pathname}`);
+    setcopied(true);
+  };
+  const handleFavorite = () => {
+    const keyValue = page === 'meals' ? 'meal' : 'drink';
+    const Alcool = page === 'meals' ? '' : Item.strAlcoholic;
+    const itemInScreen = {
+      id: Item[`id${pages}`],
+      type: keyValue,
+      nationality: Item.strArea,
+      category: Item.strCategory,
+      alcoholicOrNot: Alcool,
+      name: Item[`str${pages}`],
+      image: Item[`str${pages}Thumb`],
+    };
+    setfavorite([...favorite, itemInScreen]);
+
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favorite));
+  };
+  const fetchRecomendations = useMemo(
+    () => async () => {
+      const magicNumber = 6;
+      const url = apisRecomendation[page];
+      const response = await fetch(url);
+      const result = await response.json();
+      console.log(notPages);
+      const values = result[notPages];
+      console.log(result[notPages]);
+      const newValue = values.slice(0, magicNumber);
+      setrecomendation(newValue);
+      if (page === 'meals') {
+        setrecomendationP('Drink');
+      } else {
+        setrecomendationP('Meal');
+      }
+      setloading(true);
+    },
+    [apisRecomendation, page, notPages],
+  );
 
   useEffect(() => {
     fetchItem();
@@ -118,31 +147,48 @@ function RecipeDetails({ page, notPages }) {
           />
         </div>
       )}
-      {
-        (loading)
-        && (
-          <div className="carousel-container">
-            {recomendation.map((recomend, index) => (
-              <div
-                data-testid={ `${index}-recommendation-card` }
-                className="card"
-                key={ `${index}-${recomend[`id${recomendationP}`]}` }
-              >
-                <h1
-                  data-testid={ `${index}-recommendation-title` }
-                >
-                  {recomend[`str${keys}`]}
-                </h1>
-                <div
-                  className="Item__Container-img"
-                >
-                  <img src={ recomend[`str${recomendationP}Thumb`] } alt="teste" />
-                </div>
+      <button
+        type="button"
+        data-testid="share-btn"
+        onClick={ handleCopied }
+      >
+        <img src={ Share } alt="share-btn" />
+        Share
+      </button>
+      {(copied) && <p>Link copied!</p>}
+      <button
+        type="button"
+        data-testid="favorite-btn"
+        onClick={ handleFavorite }
+      >
+        Favorite
+      </button>
+      {loading && (
+        <div className="carousel-container">
+          {recomendation.map((recomend, index) => (
+            <div
+              data-testid={ `${index}-recommendation-card` }
+              className="card"
+              key={ `${index}-${recomend[`id${recomendationP}`]}` }
+            >
+              <h1 data-testid={ `${index}-recommendation-title` }>
+                {recomend[`str${keys}`]}
+              </h1>
+              <div className="Item__Container-img">
+                <img src={ recomend[`str${recomendationP}Thumb`] } alt="teste" />
               </div>
-            ))}
-          </div>
-        )
-      }
+            </div>
+          ))}
+        </div>
+      )}
+      <button
+        type="button"
+        className="btn-start-recepie"
+        data-testid="start-recipe-btn"
+        onClick={ () => history.push(`/${page}/${id}/in-progress`) }
+      >
+        Start Recipe
+      </button>
     </div>
   );
 }

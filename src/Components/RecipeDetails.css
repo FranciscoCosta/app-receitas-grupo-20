@@ -3,21 +3,22 @@
 }
 
 .carousel-container {
-  background-color: aqua;
   align-items: center;
-  justify-content: flex-start;
-  display: flex;
+  background-color: aqua;
+  display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 360px;
-  height: 200px;
   gap: 6rem;
+  height: 180px;
+  justify-content: flex-start;
   overflow-x: auto;
+  width: 150px;
 }
+
 .Item__Container-img {
   border: 2px solid red;
-  width: 170px;
-  height: 100px;
+  height: 180px;
+  width: 180px;
 }
 
 .Item__Container-img img {
@@ -25,11 +26,7 @@
   width: 100%;
 }
 
-.Item-Details-img {
-  width: 5rem;
-  height: 5rem;
-}
-.Item-Details-img img {
-  height: 100%;
-  width: 100%;
+.btn-start-recepie {
+  bottom: 0;
+  position: fixed;
 }
