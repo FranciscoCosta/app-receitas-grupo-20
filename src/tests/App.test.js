@@ -147,7 +147,6 @@ describe('Footer component tests', () => {
       </Provider>,
       ['/meals'],
     );
-    console.log(history);
     const searchBtn = screen.getByTestId('search-top-btn');
     userEvent.click(searchBtn);
     const inputRadioName = screen.getByTestId('name-search-radio');

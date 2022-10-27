@@ -41,7 +41,6 @@ function RecipeDetails({ page, notPages }) {
         setpages('Drink');
         setKey('Meal');
       }
-      console.log(notPages);
       const values = Object.entries(item[page][0]);
       const ingridientsArray = values.filter(
         ([key, value]) => key.includes('strIngredient') && value,
@@ -62,9 +61,7 @@ function RecipeDetails({ page, notPages }) {
     const url = apisRecomendation[page];
     const response = await fetch(url);
     const result = await response.json();
-    console.log(notPages);
     const values = result[notPages];
-    console.log(result[notPages]);
     const newValue = values.slice(0, magicNumber);
     setrecomendation(newValue);
     if (page === 'meals') {

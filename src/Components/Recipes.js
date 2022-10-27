@@ -18,7 +18,6 @@ function Recipes({ history, page }) {
   useEffect(() => {
     const products = dataApi[`${page}`];
     const value = products === null || products === undefined ? [] : products;
-    console.log(value, 'value', products, 'products');
     if (value.length === 1 && !categorySearch) {
       const idProduto = Object.values(products[0])[0];
       history.push(`/${page}/${idProduto}`);

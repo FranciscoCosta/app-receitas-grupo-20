@@ -4,8 +4,9 @@ import { Context } from '../Context/Context';
 
 function Category({ page }) {
   const [categorias, setCategorias] = useState([]);
+  const [lastCategory, setLastCategory] = useState('');
 
-  const { handleCallApi, setCategorySearch, categorySearch } = useContext(Context);
+  const { handleCallApi, setCategorySearch } = useContext(Context);
 
   const apis = useMemo(() => ({
     meals: 'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
@@ -19,20 +20,31 @@ function Category({ page }) {
     const categorys = await response.json();
     const categoria5 = categorys[page].slice(0, CATEGORY_LIMIT);
     setCategorias(categoria5);
+    console.log(categoria5);
   }, [apis, page]);
 
   useEffect(() => {
     fetchCategory();
   }, [fetchCategory]);
 
-  const handleClick = ({ target: { id } }) => {
-    if (!categorySearch) {
-      handleCallApi('category', page, id);
-      setCategorySearch(true);
+  const handleClick = ({ target }) => {
+    if (target.id === lastCategory) {
+      document.getElementById(`${target.id}`).checked = false;
+      document.getElementById('allRadio').checked = true;
+      handleCallApi('default', page).then(() => {
+        setCategorySearch(false);
+      });
+      setLastCategory('');
     } else {
-      handleCallApi('default', page);
-      setCategorySearch(false);
+      handleCallApi('category', page, target.id);
+      setCategorySearch(true);
+      setLastCategory(target.id);
     }
+  };
+
+  const handleAll = () => {
+    handleCallApi('default', page);
+    setCategorySearch(false);
   };
 
   return (
@@ -43,7 +55,7 @@ function Category({ page }) {
           name="category"
           id="allRadio"
           defaultChecked
-          onClick={ handleClick }
+          onClick={ handleAll }
           data-testid="All-category-filter"
         />
         All
@@ -56,6 +68,7 @@ function Category({ page }) {
               type="radio"
               name="category"
               id={ strCategory }
+              readOnly
               onClick={ handleClick }
             />
             { strCategory }
