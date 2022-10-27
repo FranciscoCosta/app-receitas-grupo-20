@@ -7,7 +7,6 @@
   background-color: aqua;
   display: inline-flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   gap: 6rem;
   height: 180px;
   justify-content: flex-start;
