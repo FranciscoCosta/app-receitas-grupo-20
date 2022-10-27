@@ -41,7 +41,6 @@ function RecipeDetails({ page }) {
         setpages('Drink');
         setnotPages('meals');
       }
-      console.log(notPages);
       const values = Object.entries(item[page][0]);
       const ingridientsArray = values.filter(
         ([key, value]) => key.includes('strIngredient') && value,
@@ -54,16 +53,16 @@ function RecipeDetails({ page }) {
         .filter((e) => e[0] !== undefined);
       setItemIngridients(finalArray);
     },
-    [apis, page, notPages],
+    [apis, page],
   );
 
   const fetchRecomendations = useMemo(() => async () => {
+    const SLICE_LIMIT = 6;
     const url = apisRecomendation[page];
     const response = await fetch(url);
     const result = await response.json();
-    console.log(notPages);
-    const values = result[`${notPages}`];
-    const newValue = values.slice(0, 6);
+    const values = result[notPages];
+    const newValue = values.slice(0, SLICE_LIMIT);
     setrecomendation(newValue);
     if (page === 'meals') {
       setrecomendationP('Drink');
@@ -71,7 +70,7 @@ function RecipeDetails({ page }) {
       setrecomendationP('Meal');
     }
     setloading(true);
-  }, [apisRecomendation, page]);
+  }, [apisRecomendation, page, notPages]);
 
   useEffect(() => {
     fetchItem();

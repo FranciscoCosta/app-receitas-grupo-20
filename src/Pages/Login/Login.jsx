@@ -23,6 +23,7 @@ function Login({ history }) {
       setvalid(false);
     }
   };
+
   const handleClick = () => {
     const user = {
       email,
@@ -30,6 +31,7 @@ function Login({ history }) {
     localStorage.setItem('user', JSON.stringify((user)));
     history.push('/meals');
   };
+
   return (
     <div className="Login">
       <div className="Login__container">
