@@ -10,6 +10,8 @@ import Provider from '../Context/Context';
 //   renderWithRouter(<App />);
 // });
 
+const searchButton = 'search-top-btn';
+
 describe('Login page tests', () => {
   test('Test if elements are showed', () => {
     const { history } = renderWithRouter(
@@ -44,13 +46,13 @@ describe('Header component tests', () => {
     );
 
     const profileLink = screen.getByTestId('profile-top-btn');
-    const searchLink = screen.getByTestId('search-top-btn');
+    const searchLink = screen.getByTestId(searchButton);
 
     expect(profileLink).toBeInTheDocument();
     expect(searchLink).toBeInTheDocument();
 
     userEvent.click(searchLink);
-    const searchInput = screen.getByTestId('search-input');
+    const searchInput = screen.getByTestId(searchButton);
     expect(searchInput).toBeInTheDocument();
 
     userEvent.click(profileLink);
@@ -66,13 +68,13 @@ describe('Header component tests', () => {
     );
 
     const profileLink = screen.getByTestId('profile-top-btn');
-    const searchLink = screen.getByTestId('search-top-btn');
+    const searchLink = screen.getByTestId(searchButton);
 
     expect(profileLink).toBeInTheDocument();
     expect(searchLink).toBeInTheDocument();
 
     userEvent.click(searchLink);
-    const searchInput = screen.getByTestId('search-input');
+    const searchInput = screen.getByTestId(searchButton);
 
     const inputRadioIngredient = screen.getByTestId('ingredient-search-radio');
     const inputRadioName = screen.getByTestId('name-search-radio');
@@ -147,11 +149,11 @@ describe('Footer component tests', () => {
       </Provider>,
       ['/meals'],
     );
-    const searchBtn = screen.getByTestId('search-top-btn');
+    const searchBtn = screen.getByTestId(searchButton);
     userEvent.click(searchBtn);
     const inputRadioName = screen.getByTestId('name-search-radio');
     const btnCall = screen.getByTestId('exec-search-btn');
-    const searchInput = screen.getByTestId('search-input');
+    const searchInput = screen.getByTestId(searchButton);
 
     userEvent.click(inputRadioName);
     userEvent.type(searchInput, 'Arrabiata');

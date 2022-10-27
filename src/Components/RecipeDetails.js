@@ -59,7 +59,7 @@ function RecipeDetails({ page, notPages, history }) {
         .filter((e) => e[0] !== undefined);
       setItemIngridients(finalArray);
     },
-    [apis, page, keys],
+    [apis, page],
   );
 
   const handleCopied = () => {
