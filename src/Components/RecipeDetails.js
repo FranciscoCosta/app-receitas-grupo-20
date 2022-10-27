@@ -58,12 +58,13 @@ function RecipeDetails({ page }) {
   );
 
   const fetchRecomendations = useMemo(() => async () => {
+    const magicNumber = 6;
     const url = apisRecomendation[page];
     const response = await fetch(url);
     const result = await response.json();
     console.log(notPages);
     const values = result[`${notPages}`];
-    const newValue = values.slice(0, 6);
+    const newValue = values.slice(0, magicNumber);
     setrecomendation(newValue);
     if (page === 'meals') {
       setrecomendationP('Drink');
