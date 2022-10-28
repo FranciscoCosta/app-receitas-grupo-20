@@ -28,10 +28,7 @@ function Recipes({ history, page }) {
     }
   }, [dataApi, history, page, categorySearch, key]);
   return (
-    <div
-      data-testid={ `${key}__cards` }
-      className={ `${key}__cards` }
-    >
+    <div data-testid={ `${key}__cards` } className={ `${key}__cards` }>
       {produtos.map((curr, index) => (
         <div
           role="button"
