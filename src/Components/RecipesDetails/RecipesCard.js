@@ -26,8 +26,6 @@ function RecipesCard({ Item, pages, page, loading }) {
     if (favoriteNames.includes(itemInScreen.name)) {
       const newFavorites = oldFavorites
         .filter(({ name }) => name !== itemInScreen.name);
-      // console.log(newFavorites);
-
       localStorage.setItem('favoriteRecipes', JSON
         .stringify([...newFavorites]));
       setIsFavorite(false);
