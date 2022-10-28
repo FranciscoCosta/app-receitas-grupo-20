@@ -20,7 +20,7 @@ function Recipes({ history, page }) {
     const value = products === null || products === undefined ? [] : products;
     if (value.length === 1 && !categorySearch) {
       const idProduto = products[0][`id${key}`];
-      console.log(idProduto);
+      // console.log(idProduto);
       history.push(`/${page}/${idProduto}`);
     } else {
       const newValue = value.slice(0, LIMIT_ELEMENTS);

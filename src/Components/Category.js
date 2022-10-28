@@ -20,7 +20,7 @@ function Category({ page }) {
     const categorys = await response.json();
     const categoria5 = categorys[page].slice(0, CATEGORY_LIMIT);
     setCategorias(categoria5);
-    console.log(categoria5);
+    // console.log(categoria5);
   }, [apis, page]);
 
   useEffect(() => {

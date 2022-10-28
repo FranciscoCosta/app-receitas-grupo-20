@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import perfil from '../../images/profileIcon.svg';
 import search from '../../images/searchIcon.svg';
@@ -35,10 +35,11 @@ function Header({ title, perfilBool, searchBool, type }) {
 Header.defaultProps = {
   perfilBool: undefined,
   searchBool: undefined,
+  type: string,
 };
 
 Header.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   title: PropTypes.string.isRequired,
   perfilBool: PropTypes.bool,
   searchBool: PropTypes.bool,
