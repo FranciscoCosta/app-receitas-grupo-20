@@ -20,7 +20,7 @@ function Recipes({ history, page }) {
     const value = products === null || products === undefined ? [] : products;
     if (value.length === 1 && !categorySearch) {
       const idProduto = products[0][`id${key}`];
-      // console.log(idProduto);
+      console.log(idProduto);
       history.push(`/${page}/${idProduto}`);
     } else {
       const newValue = value.slice(0, LIMIT_ELEMENTS);
@@ -40,7 +40,7 @@ function Recipes({ history, page }) {
           className={ `${key}__card-info` }
           data-testid={ `${index}-recipe-card` }
           key={ curr[`id${key}`] }
-          onClick={ () => history.push(`/${page}/${Object.values(curr)[0]}`) }
+          onClick={ () => history.push(`/${page}/${curr[`id${key}`]}`) }
         >
           <img
             className={ `${key}__card-img` }
