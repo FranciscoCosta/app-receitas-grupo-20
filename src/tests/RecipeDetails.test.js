@@ -13,7 +13,7 @@ describe('RecipeDetails page tests', () => {
       </Provider>,
       ['/meals'],
     );
-    const searchBtn = screen.getByTestId(searchButton);
+    const searchBtn = screen.getByTestId('search-top-btn');
     userEvent.click(searchBtn);
     const inputRadioName = screen.getByTestId('name-search-radio');
     const btnCall = screen.getByTestId('exec-search-btn');
