@@ -10,7 +10,6 @@ function RecipeDetails({ page, notPages, history }) {
   const { location: { pathname } } = history;
   console.log(pathname, 'pathname');
   const [copied, setcopied] = useState(false);
-  const [favorite, setfavorite] = useState([]);
   const [ItemIngridients, setItemIngridients] = useState([]);
   const [recomendation, setrecomendation] = useState([]);
   const [loading, setloading] = useState(false);
@@ -72,15 +71,16 @@ function RecipeDetails({ page, notPages, history }) {
     const itemInScreen = {
       id: Item[`id${pages}`],
       type: keyValue,
-      nationality: Item.strArea,
+      nationality: Item.strArea || '',
       category: Item.strCategory,
       alcoholicOrNot: Alcool,
       name: Item[`str${pages}`],
       image: Item[`str${pages}Thumb`],
     };
-    setfavorite([...favorite, itemInScreen]);
+    const oldFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
 
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favorite));
+    localStorage.setItem('favoriteRecipes', JSON
+      .stringify([...oldFavorites, itemInScreen]));
   };
   const fetchRecomendations = useMemo(
     () => async () => {

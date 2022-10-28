@@ -1,0 +1,30 @@
+.Header {
+  align-content: space-between;
+  align-items: flex-start;
+  background-color: red;
+  display: flex;
+  height: 5.5vh;
+}
+
+.Header a, button, img {
+  height: 5vh;
+  padding: 1px;
+  width: auto;
+}
+
+.Header a {
+  margin-left: auto;
+}
+
+.Header button {
+  background-color: inherit;
+  border: 0;
+}
+
+.Header h1 {
+  height: inherit;
+  left: auto;
+  margin: 0;
+  width: 40vw;
+}
+

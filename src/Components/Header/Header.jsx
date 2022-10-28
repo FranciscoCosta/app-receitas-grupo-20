@@ -1,33 +1,35 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import perfil from '../images/profileIcon.svg';
-import search from '../images/searchIcon.svg';
-import SearchBar from './SearchBar';
+import perfil from '../../images/profileIcon.svg';
+import search from '../../images/searchIcon.svg';
+import SearchBar from '../SearchBar';
+import './Header.css';
 
 function Header({ title, perfilBool, searchBool, type }) {
   const [inputSearch, setinputSearch] = useState(false);
   return (
-    <div className="Header">
-      {perfilBool && (
-        <Link to="/profile">
-          <img src={ perfil } alt="perfil-icon" data-testid="profile-top-btn" />
-        </Link>
-      )}
+    <section>
+      <div className="Header">
+        <h1 data-testid="page-title">{title}</h1>
+        {perfilBool && (
+          <Link to="/profile">
+            <img src={ perfil } alt="perfil-icon" data-testid="profile-top-btn" />
+          </Link>
+        )}
 
-      { (inputSearch) && <SearchBar type={ type } />}
-      {searchBool
+        {searchBool
       && (
         <button
           type="button"
           onClick={ () => { setinputSearch(!inputSearch); } }
-          style={ { background: 'red' } }
         >
           <img src={ search } alt="search-icon" data-testid="search-top-btn" />
         </button>
       ) }
-      <h1 data-testid="page-title">{title}</h1>
-    </div>
+      </div>
+      { (inputSearch) && <SearchBar type={ type } />}
+    </section>
   );
 }
 Header.defaultProps = {
