@@ -40,7 +40,7 @@ function Recipes({ history, page }) {
           className={ `${key}__card-info` }
           data-testid={ `${index}-recipe-card` }
           key={ curr[`id${key}`] }
-          onClick={ () => history.push(`/${page}/${Object.values(curr)[0]}`) }
+          onClick={ () => history.push(`/${page}/${curr[`id${key}`]}`) }
         >
           <img
             className={ `${key}__card-img` }
