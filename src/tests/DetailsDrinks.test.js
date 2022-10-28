@@ -1,9 +1,9 @@
 import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from '../App';
 import Provider from '../Context/Context';
 import renderWithRouter from './renderWithRouter';
-import userEvent from '@testing-library/user-event';
 
 describe('Test page Details Drinks', () => {
   it('Test if route `/drinks` is rendered', async () => {
