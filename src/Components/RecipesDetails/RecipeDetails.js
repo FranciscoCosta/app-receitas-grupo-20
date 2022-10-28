@@ -67,8 +67,8 @@ function RecipeDetails({ page, notPages, history }) {
     if (recomendation.length === 0) {
       const magicNumber = 6;
       handleCallApi('default', notPages).then(() => {
-        const newValue = dataApi.length === 0
-          ? [] : dataApi[notPages].slice(0, magicNumber);
+        const newValue = dataApi[notPages] === undefined
+          ? [] : dataApi[notPages].slice(0, magicNumber) || [];
         console.log(newValue, notPages);
         setrecomendation(newValue);
         if (page === 'meals') {

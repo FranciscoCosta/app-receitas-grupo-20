@@ -11,7 +11,11 @@
   height: 180px;
   justify-content: flex-start;
   overflow-x: auto;
-  width: 150px;
+  width: 180px;
+}
+
+.card {
+  width: 60px;
 }
 
 .Item__Container-img {
