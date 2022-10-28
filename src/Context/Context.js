@@ -90,6 +90,7 @@ function Provider({ children }) {
       dataApi,
       categorySearch,
       setCategorySearch,
+      fetchApi,
     }),
     [dataApi, categorySearch, setCategorySearch, handleCallApi],
   );

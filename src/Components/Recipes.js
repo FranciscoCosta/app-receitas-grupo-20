@@ -18,17 +18,17 @@ function Recipes({ history, page }) {
   useEffect(() => {
     const products = dataApi[`${page}`];
     const value = products === null || products === undefined ? [] : products;
-    console.log(value, 'value', products, 'products');
     if (value.length === 1 && !categorySearch) {
-      const idProduto = Object.values(products[0])[0];
+      const idProduto = products[0][`id${key}`];
+      // console.log(idProduto);
       history.push(`/${page}/${idProduto}`);
     } else {
       const newValue = value.slice(0, LIMIT_ELEMENTS);
       setProdutos(newValue);
     }
-  }, [dataApi, history, page, categorySearch]);
+  }, [dataApi, history, page, categorySearch, key]);
   return (
-    <div className={ `${key}__cards` }>
+    <div data-testid={ `${key}__cards` } className={ `${key}__cards` }>
       {produtos.map((curr, index) => (
         <div
           role="button"
@@ -37,7 +37,7 @@ function Recipes({ history, page }) {
           className={ `${key}__card-info` }
           data-testid={ `${index}-recipe-card` }
           key={ curr[`id${key}`] }
-          onClick={ () => history.push(`/${page}/${Object.values(curr)[0]}`) }
+          onClick={ () => history.push(`/${page}/${curr[`id${key}`]}`) }
         >
           <img
             className={ `${key}__card-img` }

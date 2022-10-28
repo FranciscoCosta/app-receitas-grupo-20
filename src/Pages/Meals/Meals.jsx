@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../../Components/Header';
-import Footer from '../../Components/Footer';
+import Header from '../../Components/Header/Header';
+import Footer from '../../Components/Footer/Footer';
 import Recipes from '../../Components/Recipes';
 import Category from '../../Components/Category';
 
