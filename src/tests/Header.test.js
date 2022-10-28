@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { Meals } from '../Pages';
 import renderWithRouter from './renderWithRouter';
 import Provider from '../Context/Context';
+import App from '../App';
 
 const searchButton = 'search-top-btn';
 
@@ -44,7 +45,7 @@ describe('Header component tests', () => {
     expect(searchLink).toBeInTheDocument();
 
     userEvent.click(searchLink);
-    const searchInput = screen.getByTestId(searchButton);
+    const searchInput = screen.getByTestId('search-input');
 
     const inputRadioIngredient = screen.getByTestId('ingredient-search-radio');
     const inputRadioName = screen.getByTestId('name-search-radio');
@@ -69,5 +70,16 @@ describe('Header component tests', () => {
       { timeout: 4000 },
     );
     expect(card0).toBeInTheDocument();
+  });
+  test('Test input is sent to state', async () => {
+    renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+      ['/drinks'],
+    );
+    const search = screen.getByTestId(searchButton);
+    expect(search).toBeInTheDocument();
+    userEvent.click(search);
   });
 });
