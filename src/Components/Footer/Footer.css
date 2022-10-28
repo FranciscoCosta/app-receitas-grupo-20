@@ -1,0 +1,27 @@
+.Footer {
+  align-content: flex-end;
+  align-items: flex-end;
+  background-color: red;
+  bottom: 0;
+  display: flex;
+  height: 5.5vh;
+  position: fixed;
+  width: 100%;
+}
+
+.Footer img {
+  height: 5vh;
+  padding-top: 0.4vh;
+  width: auto;
+}
+
+.Footer a {
+  height: inherit;
+  left: auto;
+  padding-right: 1vw;
+  width: auto;
+}
+
+.mealsLink {
+  margin-left: auto;
+}

@@ -1,0 +1,47 @@
+* {
+  width: 320px;
+}
+
+.carousel-container {
+  align-items: center;
+  background-color: aqua;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 6rem;
+  height: 180px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  width: 180px;
+}
+
+.card {
+  width: 60px;
+}
+
+.Item__Container-img {
+  border: 2px solid red;
+  height: 180px;
+  width: 180px;
+}
+
+.Item__Container-img img {
+  height: 100%;
+  width: 100%;
+}
+
+.btn-start-recepie {
+  bottom: 0;
+  position: fixed;
+}
+
+.favoriteBtn {
+  background-color: inherit;
+  border: none;
+  height: 5vh;
+  width: 10vw;
+}
+
+.FavoriteBtn img {
+  height: fit-content;
+  width: fit-content;
+}
