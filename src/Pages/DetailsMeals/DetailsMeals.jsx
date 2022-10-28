@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RecipeDetails from '../../Components/RecipeDetails';
+import RecipeDetails from '../../Components/RecipesDetails/RecipeDetails';
 
 function DetailsMeals({ history }) {
   return (
