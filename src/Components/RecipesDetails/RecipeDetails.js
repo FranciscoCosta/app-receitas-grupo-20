@@ -20,7 +20,7 @@ function RecipeDetails({ page, notPages, history }) {
   const [pages, setpages] = useState('');
   const [recomendationP, setrecomendationP] = useState('');
   const { id } = useParams();
-  const { handleCallApi, dataApi } = useContext(Context);
+  const { handleCallApi, dataApi, fetchApi } = useContext(Context);
 
   const apis = useMemo(
     () => ({
@@ -33,8 +33,7 @@ function RecipeDetails({ page, notPages, history }) {
   const fetchItem = useMemo(
     () => async () => {
       const url = apis[page];
-      const response = await fetch(url);
-      const item = await response.json();
+      const item = await fetchApi(url);
       setitemPage(item[page][0]);
       if (page === 'meals') {
         setpages('Meal');
@@ -69,7 +68,6 @@ function RecipeDetails({ page, notPages, history }) {
       handleCallApi('default', notPages).then(() => {
         const newValue = dataApi[notPages] === undefined
           ? [] : dataApi[notPages].slice(0, magicNumber) || [];
-        console.log(newValue, notPages);
         setrecomendation(newValue);
         if (page === 'meals') {
           setrecomendationP('Drink');

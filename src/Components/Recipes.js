@@ -19,13 +19,14 @@ function Recipes({ history, page }) {
     const products = dataApi[`${page}`];
     const value = products === null || products === undefined ? [] : products;
     if (value.length === 1 && !categorySearch) {
-      const idProduto = Object.values(products[0])[0];
+      const idProduto = products[0][`id${key}`];
+      console.log(idProduto);
       history.push(`/${page}/${idProduto}`);
     } else {
       const newValue = value.slice(0, LIMIT_ELEMENTS);
       setProdutos(newValue);
     }
-  }, [dataApi, history, page, categorySearch]);
+  }, [dataApi, history, page, categorySearch, key]);
   return (
     <div
       data-testid={ `${key}__cards` }
