@@ -29,3 +29,15 @@
   bottom: 0;
   position: fixed;
 }
+
+.favoriteBtn {
+  background-color: inherit;
+  border: none;
+  height: 5vh;
+  width: 10vw;
+}
+
+.FavoriteBtn img {
+  height: fit-content;
+  width: fit-content;
+}
