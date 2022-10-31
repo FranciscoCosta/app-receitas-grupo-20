@@ -1,9 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import RecipeInPogress from '../../Components/RecipeInPogress';
 
-function RecipeMeals() {
+function RecipeMeals({ history }) {
   return (
-    <div>RecipeMeals</div>
+    <div className="RecipeMeals">
+      <RecipeInPogress page="meals" history={ history } />
+    </div>
   );
 }
+
+RecipeMeals.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}.isRequired;
 
 export default RecipeMeals;

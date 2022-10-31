@@ -1,0 +1,16 @@
+.Login {
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+.Login__container {
+  align-items: center;
+  border: 10px solid red;
+  display: flex;
+  justify-content: center;
+}
