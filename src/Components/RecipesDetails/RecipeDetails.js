@@ -50,7 +50,6 @@ function RecipeDetails({ page, notPages, history }) {
         }
       });
       setloading(true);
-      fetchItem();
     }
   }, [fetchItem, page, notPages, dataApi, handleCallApi, recomendation, id]);
 
