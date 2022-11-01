@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import RecipesInProg from '../../Components/RecepiesInPro/RecepiesInProg';
 
 function RecipeMeals({ history }) {
   return (
-    <RecipesInProg page="meals" pages="Meal" history={ history } />
+    <div className="RecipeMeals">
+      <RecipesInProg page="meals" pages="Meal" history={ history } />
+    </div>
   );
 }
 
