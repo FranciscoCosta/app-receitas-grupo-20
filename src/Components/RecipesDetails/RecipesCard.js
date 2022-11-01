@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import whiteHeart from '../../images/whiteHeartIcon.svg';
 import blackHeart from '../../images/blackHeartIcon.svg';
-import './RecipeDetails.css';
 
 function RecipesCard({ Item, pages, page, loading }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -26,7 +25,6 @@ function RecipesCard({ Item, pages, page, loading }) {
     if (favoriteNames.includes(itemInScreen.name)) {
       const newFavorites = oldFavorites
         .filter(({ name }) => name !== itemInScreen.name);
-      // console.log(newFavorites);
 
       localStorage.setItem('favoriteRecipes', JSON
         .stringify([...newFavorites]));
@@ -86,6 +84,9 @@ function RecipesCard({ Item, pages, page, loading }) {
   );
 }
 
+RecipesCard.defaultProps = {
+  loading: true,
+};
 RecipesCard.propTypes = {
   Item: PropTypes.objectOf(PropTypes.shape),
   page: PropTypes.string,

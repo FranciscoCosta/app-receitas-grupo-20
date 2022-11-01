@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function RecipeMeals() {
+import RecipesInProg from '../../Components/RecepiesInPro/RecepiesInProg';
+
+function RecipeMeals({ history }) {
   return (
-    <div>RecipeMeals</div>
+    <RecipesInProg page="meals" pages="Meal" history={ history } />
   );
 }
+
+RecipeMeals.propTypes = {
+  history: PropTypes.objectOf(PropTypes.shape),
+}.isRequired;
 
 export default RecipeMeals;
