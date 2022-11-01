@@ -82,6 +82,21 @@ describe('RecipeDetails page tests', () => {
     );
     expect(divDrinks).toBeInTheDocument();
   });
+
+  test('Test if meals route is render with key Meal', async () => {
+    renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+      ['/meals'],
+    );
+    const divMeals = await screen.findByTestId(
+      'Meal__cards',
+      {},
+      { timeout: 4000 },
+    );
+    expect(divMeals).toBeInTheDocument();
+  });
 });
 
 test('Test if only 1 elment send to right page id', async () => {
@@ -121,6 +136,21 @@ test('Test if sends to in pogress', async () => {
   await waitFor(() => {
     const { pathname } = history.location;
     expect(pathname).toBe('/drinks/15997/in-progress');
+  });
+});
+
+test('Test if sends to in pogress', async () => {
+  const { history } = renderWithRouter(
+    <Provider>
+      <App />
+    </Provider>,
+    ['/meals/52977'],
+  );
+  const start = screen.getByTestId('start-recipe-btn');
+  userEvent.click(start);
+  await waitFor(() => {
+    const { pathname } = history.location;
+    expect(pathname).toBe('/meals/52977/in-progress');
   });
 });
 

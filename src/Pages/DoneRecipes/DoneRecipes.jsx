@@ -11,17 +11,13 @@ function DoneRecipes({ history }) {
   const [haveData, setHaveData] = useState(false);
 
   const checkLoad = () => {
-    console.log('checkload');
-    console.log('done', done);
     if (done !== []) {
       setHaveData(true);
-      console.log('false');
     }
   };
 
   const getLocalStorage = () => {
     const data = JSON.parse(localStorage.getItem('doneRecipes'));
-    console.log('data', data);
     if (data === null || undefined) {
       setDone([]);
       setpureData([]);
@@ -32,7 +28,6 @@ function DoneRecipes({ history }) {
     checkLoad();
   };
   const handleCopied = (id, type) => {
-    console.log(id, type);
     copy(`http://localhost:3000/${type}s/${id}`);
     setcopied(true);
   };
