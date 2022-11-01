@@ -14,7 +14,6 @@ describe('Categoreis component tests', () => {
     );
 
     const categoreis = await screen.findByTestId('Beef-category-filter');
-    console.log(categoreis);
     expect(categoreis).toBeInTheDocument();
     const allCategoreis = await screen.findByTestId('All-category-filter');
 
