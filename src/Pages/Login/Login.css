@@ -1,13 +1,14 @@
 .Login {
   align-items: center;
-  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
-  justify-content: center;
   height: 100vh;
+  justify-content: center;
   width: 100vw;
 }
+
 .Login__container {
   align-items: center;
   border: 10px solid red;
