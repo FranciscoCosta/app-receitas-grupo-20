@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 import Provider from '../Context/Context';
+// import RecipesCard from '../Components/RecipesDetails/RecipesCard';
 
 const drinksURl = '/drinks/15997';
 
@@ -93,8 +94,8 @@ test('Test if only 1 elment send to right page id', async () => {
   const searchBtn = screen.getByTestId(searchButton);
   userEvent.click(searchBtn);
   const inputRadioName = screen.getByTestId('name-search-radio');
-  const btnCall = screen.getByTestId('exec-search-btn');
   const searchInput = screen.getByTestId('search-input');
+  const btnCall = screen.getByTestId('exec-search-btn');
 
   userEvent.click(inputRadioName);
   userEvent.type(searchInput, 'Aquamarine');
@@ -187,5 +188,32 @@ describe('testa os componentes da tela de ingredientes', () => {
     );
     const recomendation = await screen.findByTestId('0-recommendation-card');
     expect(recomendation).toBeInTheDocument();
+  });
+
+  test('testa se o localStorage funciona', async () => {
+    renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+      ['/meals/52771'],
+    );
+    localStorage.clear();
+    const favoriteBtn = await screen.findByTestId('favorite-btn');
+    userEvent.click(favoriteBtn);
+    // const favorite = [{
+    //   id: 15997,
+    //   type: 'drink',
+    //   nationality: '',
+    //   category: 'Ordinary Drink',
+    //   alcoholicOrNot: 'Optional alcohol',
+    //   name: 'GG',
+    //   image: 'https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg',
+    // }];
+    await waitFor(() => {
+      const getLocalStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      console.log('log', getLocalStorage);
+      expect(favoriteBtn).toBeInTheDocument();
+      expect(getLocalStorage.length).toBe(1);
+    });
   });
 });
