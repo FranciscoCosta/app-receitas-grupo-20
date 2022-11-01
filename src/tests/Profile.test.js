@@ -127,4 +127,32 @@ describe('Profile page tests', () => {
       expect(pathname).toBe('/');
     });
   });
+
+  test('Test if email is right', async () => {
+    const { history } = renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+      ['/'],
+    );
+    const emailInput = screen.getByTestId('email-input');
+    const passwordInput = screen.getByTestId('password-input');
+    const btnLogin = screen.getByTestId('login-submit-btn');
+    expect(emailInput).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
+    expect(btnLogin).toBeInTheDocument();
+    userEvent.type(emailInput, 'teste@gmail.com');
+    userEvent.type(passwordInput, '123456A');
+    userEvent.click(btnLogin);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/meals');
+    renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+      ['/profile'],
+    );
+    const email = screen.getByTestId('profile-email');
+    expect(email).toHaveTextContent('teste@gmail.com');
+  });
 });

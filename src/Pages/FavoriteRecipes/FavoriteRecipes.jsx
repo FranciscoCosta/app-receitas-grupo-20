@@ -9,29 +9,8 @@ function FavoriteRecipes({ history }) {
   const [done, setDone] = useState([]);
   const [copied, setcopied] = useState(false);
   const [pureData, setpureData] = useState([]);
+  const [haveData, setHaveData] = useState(false);
 
-  // DELETAR MOCK E FUNÇÃO `SETLOCALSTORAGETESTE`
-  // APÓS RESOLUÇÃO DOS REQUISITOS 37-43
-  const dataMock = [
-    {
-      id: '52771',
-      type: 'meal',
-      nationality: 'Italian',
-      category: 'Vegetarian',
-      alcoholicOrNot: '',
-      name: 'Spicy Arrabiata Penne',
-      image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-    },
-    {
-      id: '178319',
-      type: 'drink',
-      nationality: '',
-      category: 'Cocktail',
-      alcoholicOrNot: 'Alcoholic',
-      name: 'Aquamarine',
-      image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-    },
-  ];
   const handleRemove = ({ target }) => {
     const idAlvo = target.name;
     const oldFavorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
@@ -40,33 +19,29 @@ function FavoriteRecipes({ history }) {
     setpureData(newFavorites);
     setDone(newFavorites);
   };
-  //
-  //
-  // const handleFavorite = () => {
-  //   if (favoriteNames.includes(dataMock.name)) {
-  //     const newFavorites = oldFavorites
-  //       .filter(({ name }) => name !== dataMock.name);
-  //     localStorage.setItem('favoriteRecipes', JSON
-  //       .stringify([...newFavorites]));
-  //     setIsFavorite(false);
-  //   } else {
-  //     localStorage.setItem('favoriteRecipes', JSON
-  //       .stringify([...oldFavorites, dataMock]));
-  //     setIsFavorite(true);
-  //   }
-  // };
-
-  const setLocalStorageTESTE = () => {
-    localStorage.setItem('favoriteRecipes', JSON.stringify(dataMock));
+  const checkLoad = () => {
+    console.log('checkload');
+    console.log('done', done);
+    if (done !== []) {
+      setHaveData(true);
+      console.log('false');
+    }
   };
   const getLocalStorage = () => {
     const data = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    setDone(data);
-    setpureData(data);
+    console.log('asdas', data);
+    if (data === null || undefined) {
+      setDone([]);
+      setpureData([]);
+    } else {
+      setDone(data);
+      setpureData(data);
+    }
+    checkLoad();
   };
-  const handleCopied = (id) => {
-    // copy(`http://localhost:3000/${ page }/${ id }`);
-    copy(`http://localhost:3000/meals/${id}`);
+
+  const handleCopied = (id, type) => {
+    copy(`http://localhost:3000/${type}s/${id}`);
     setcopied(true);
   };
   const handleAll = () => {
@@ -82,122 +57,139 @@ function FavoriteRecipes({ history }) {
     setDone(filterMeal);
   };
   useEffect(() => {
-    setLocalStorageTESTE();
     getLocalStorage();
-  }, [setpureData]);
+    checkLoad();
+  }, []);
+
+  useEffect(() => {
+    checkLoad();
+  }, [haveData, setpureData]);
+
   return (
     <div className="FavoriteRecipes">
       <Header title="Favorite Recipes" perfilBool />
-      <form>
-        <button
-          data-testid="filter-by-all-btn"
-          type="button"
-          name="allBtn"
-          id="allBtn"
-          onClick={ handleAll }
-        >
-          All
-        </button>
+      {
+        !haveData
+          ? <h1>Não tem receita pronta</h1>
+          : (
+            <form>
+              <button
+                data-testid="filter-by-all-btn"
+                type="button"
+                name="allBtn"
+                id="allBtn"
+                onClick={ handleAll }
+              >
+                All
+              </button>
 
-        <button
-          data-testid="filter-by-meal-btn"
-          type="button"
-          name="mealBtn"
-          id="mealBtn"
-          onClick={ handleMeal }
-        >
-          Meals
-        </button>
-        <button
-          data-testid="filter-by-drink-btn"
-          type="button"
-          name="drinkBtn"
-          id="drinkBtn"
-          onClick={ handleDrink }
-        >
-          Drinks
-        </button>
-        {
-          done.map((recipe, index) => (
-            <div key={ recipe.id }>
-              <img
-                role="button"
-                tabIndex="0"
-                onKeyPress={ () => { } }
-                // onClick={ () => history.push(`/${page}/${id}`) }
-                onClick={ () => history.push(`/meals/${recipe.id}`) }
-                data-testid={ `${index}-horizontal-image` }
-                src={ recipe.image }
-                alt={ recipe.name }
-                style={ { width: '50px', height: '50px' } }
-              />
-              <label
-                htmlFor="category"
-              >
-                <h2
-                  data-testid={ `${index}-horizontal-top-text` }
-                  id={ recipe.category }
-                >
-                  {
-                    `${recipe.nationality} - ${recipe.category} - ${recipe.alcoholicOrNot}`
-                  }
-                </h2>
-              </label>
-              <label
-                htmlFor="name"
-              >
-                <h2
-                  role="button"
-                  tabIndex="0"
-                  onKeyPress={ () => { } }
-                  data-testid={ `${index}-horizontal-name` }
-                  id={ recipe.name }
-                  // onClick={ () => history.push(`/${page}/${id}`) }
-                  onClick={ () => history.push(`/drinks/${recipe.id}`) }
-                >
-                  { recipe.name }
-                </h2>
-              </label>
-              <label
-                htmlFor="doneDate"
-              >
-                <h2
-                  data-testid={ `${index}-horizontal-done-date` }
-                  id={ recipe.doneDate }
-                >
-                  { recipe.doneDate }
-                </h2>
-              </label>
               <button
+                data-testid="filter-by-meal-btn"
                 type="button"
-                name={ `share${index}` }
-                id={ `share${index}` }
-                onClick={ () => handleCopied(recipe.id) }
+                name="mealBtn"
+                id="mealBtn"
+                onClick={ handleMeal }
               >
-                <img
-                  data-testid={ `${index}-horizontal-share-btn` }
-                  src={ shareIcon }
-                  alt="shareButton"
-                />
+                Meals
               </button>
-              { (copied) && <p>Link copied!</p> }
               <button
+                data-testid="filter-by-drink-btn"
                 type="button"
-                name={ `share${index}` }
-                id={ `share${index}` }
-                onClick={ handleRemove }
+                name="drinkBtn"
+                id="drinkBtn"
+                onClick={ handleDrink }
               >
-                <img
-                  name={ recipe.id }
-                  data-testid={ `${index}-horizontal-favorite-btn` }
-                  src={ blackHeart }
-                  alt="img de coração"
-                />
+                Drinks
               </button>
-            </div>
-          ))
-        }
-      </form>
+              {
+                done.map((recipe, index) => (
+                  <div key={ recipe.id }>
+                    <div
+                      role="button"
+                      tabIndex="0"
+                      onKeyPress={ () => {} }
+                      onClick={ () => history.push(`/${recipe.type}s/${recipe.id}`) }
+                    >
+                      <img
+                        data-testid={ `${index}-horizontal-image` }
+                        src={ recipe.image }
+                        alt={ recipe.name }
+                        style={ { width: '50px', height: '50px' } }
+                      />
+                    </div>
+                    <label
+                      htmlFor="category"
+                    >
+                      <h2
+                        data-testid={ `${index}-horizontal-top-text` }
+                        id={ recipe.category }
+                      >
+                        {
+                          `${recipe.nationality}
+                     - ${recipe.category}
+                      - ${recipe.alcoholicOrNot}`
+                        }
+                      </h2>
+                    </label>
+                    <label
+                      htmlFor="name"
+                    >
+                      <div
+                        role="button"
+                        tabIndex="0"
+                        onKeyPress={ () => {} }
+                        onClick={ () => history.push(`/${recipe.type}s/${recipe.id}`) }
+                      >
+                        <h2
+                          data-testid={ `${index}-horizontal-name` }
+                          id={ recipe.name }
+                        >
+                          { recipe.name }
+                        </h2>
+                      </div>
+                    </label>
+                    <label
+                      htmlFor="doneDate"
+                    >
+                      <h2
+                        data-testid={ `${index}-horizontal-done-date` }
+                        id={ recipe.doneDate }
+                      >
+                        { recipe.doneDate }
+                      </h2>
+                    </label>
+                    <button
+                      type="button"
+                      name={ `share${index}` }
+                      id={ `share${index}` }
+                      onClick={ () => handleCopied(recipe.id, recipe.type) }
+                    >
+                      <img
+                        data-testid={ `${index}-horizontal-share-btn` }
+                        src={ shareIcon }
+                        alt="shareButton"
+                      />
+                    </button>
+                    { (copied) && <p>Link copied!</p> }
+                    <button
+                      type="button"
+                      name={ `share${index}` }
+                      id={ `share${index}` }
+                      onClick={ handleRemove }
+                    >
+                      <img
+                        name={ recipe.id }
+                        data-testid={ `${index}-horizontal-favorite-btn` }
+                        src={ blackHeart }
+                        alt="img de coração"
+                      />
+                    </button>
+                  </div>
+                ))
+              }
+            </form>
+          )
+      }
     </div>
   );
 }
