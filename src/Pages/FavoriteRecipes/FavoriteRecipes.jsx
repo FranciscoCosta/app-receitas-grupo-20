@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import copy from 'clipboard-copy';
 import PropTypes from 'prop-types';
+import { GiShare } from '@react-icons/all-files/gi/GiShare';
 import shareIcon from '../../images/shareIcon.svg';
 import Header from '../../Components/Header/Header';
 import blackHeart from '../../images/blackHeartIcon.svg';
@@ -172,7 +173,8 @@ function FavoriteRecipes({ history }) {
                         </h2>
                       </label>
                       <div className="social-btn">
-                        <button
+                        <GiShare
+                          size="70"
                           type="button"
                           name={ `share${index}` }
                           id={ `share${index}` }
@@ -183,7 +185,7 @@ function FavoriteRecipes({ history }) {
                             src={ shareIcon }
                             alt="shareButton"
                           />
-                        </button>
+                        </GiShare>
                         {(copied) && (
                           <p
                             className="copied"

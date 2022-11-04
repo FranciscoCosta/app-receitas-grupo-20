@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
-
+import { GiShare } from '@react-icons/all-files/gi/GiShare';
 import RecipesCard from '../RecipesDetails/RecipesCard';
 import { Context } from '../../Context/Context';
 import Share from '../../images/shareIcon.svg';
@@ -110,14 +110,15 @@ function RecipesInProg({ page, pages, history }) {
         }
       </section>
 
-      <button
+      <GiShare
+        size="70"
         type="button"
         data-testid="share-btn"
         onClick={ handleCopied }
       >
         <img src={ Share } alt="share-btn" />
         Share
-      </button>
+      </GiShare>
 
       {(copied) && (
         <p

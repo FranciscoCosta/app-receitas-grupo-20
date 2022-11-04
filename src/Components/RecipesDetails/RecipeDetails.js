@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './RecipeDetails.css';
 import copy from 'clipboard-copy';
+import { GiShare } from '@react-icons/all-files/gi/GiShare';
 
 import Share from '../../images/shareIcon.svg';
 import RecipesCard from './RecipesCard';
@@ -59,14 +60,15 @@ function RecipeDetails({ page, notPages, history }) {
 
       <Instructions ItemIngridients={ ItemIngridients } page={ page } Item={ Item } />
 
-      <button
+      <GiShare
+        size="60"
         type="button"
         data-testid="share-btn"
         onClick={ handleCopied }
       >
         <img src={ Share } alt="share-btn" />
         Share
-      </button>
+      </GiShare>
 
       {(copied) && (
         <p

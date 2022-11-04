@@ -160,6 +160,7 @@ function DoneRecipes({ history }) {
                         </h6>
                       </label>
                       <GiShare
+                        size="70"
                         name={ `share${index}` }
                         id={ `share${index}` }
                         onClick={ () => handleCopied(recipe.id, recipe.type) }
