@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import copy from 'clipboard-copy';
 import PropTypes from 'prop-types';
-
 import { GiShare } from '@react-icons/all-files/gi/GiShare';
 import shareIcon from '../../images/shareIcon.svg';
 import Header from '../../Components/Header/Header';
 import './DoneRecipes.css';
+import Footer from '../../Components/Footer/Footer';
 
 function DoneRecipes({ history }) {
   const [done, setDone] = useState([]);
@@ -197,6 +197,7 @@ function DoneRecipes({ history }) {
             </form>
           )
       }
+      <Footer showMeals showDrinks />
     </div>
   );
 }

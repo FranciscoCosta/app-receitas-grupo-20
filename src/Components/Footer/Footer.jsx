@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { GiHotMeal } from '@react-icons/all-files/gi/GiHotMeal';
+import { GiHotMeal } from '@react-icons/all-files/gi/GiHotMeal';
+import { RiCupFill } from '@react-icons/all-files/ri/RiCupFill';
 import PropTypes from 'prop-types';
 import mealIcon from '../../images/mealIcon.svg';
 import drinkIcon from '../../images/drinkIcon.svg';
 import './Footer.css';
+
+RiCupFill;
 // GiHotMeal;
 
 function Footer({ showMeals, showDrinks }) {
@@ -32,7 +35,9 @@ function Footer({ showMeals, showDrinks }) {
               className="mealsLink"
               to="/meals"
             >
-              <img
+              <GiHotMeal
+                size={ 70 }
+                color="#2fc18c"
                 src={ mealIcon }
                 alt="footer-icon-meals"
                 data-testid="meals-bottom-btn"
@@ -46,7 +51,9 @@ function Footer({ showMeals, showDrinks }) {
         && (
           <div>
             <Link to="/drinks">
-              <img
+              <RiCupFill
+                size={ 70 }
+                color="#2fc18c"
                 src={ drinkIcon }
                 alt="footer-icon-drinks"
                 data-testid="drinks-bottom-btn"

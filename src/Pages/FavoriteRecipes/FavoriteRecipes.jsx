@@ -6,6 +6,7 @@ import shareIcon from '../../images/shareIcon.svg';
 import Header from '../../Components/Header/Header';
 import blackHeart from '../../images/blackHeartIcon.svg';
 import './FavoriteRecipes.css';
+import Footer from '../../Components/Footer/Footer';
 
 function FavoriteRecipes({ history }) {
   const [done, setDone] = useState([]);
@@ -216,6 +217,8 @@ function FavoriteRecipes({ history }) {
             </form>
           )
       }
+      <Footer showMeals showDrinks />
+
     </div>
   );
 }
