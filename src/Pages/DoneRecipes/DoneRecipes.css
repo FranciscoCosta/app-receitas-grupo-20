@@ -15,6 +15,13 @@
   justify-content: center;
 }
 
+.DoneRecepies_noRecepies {
+  align-items: center;
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+}
+
 .DoneRecipes__container-item {
   align-items: center;
   display: flex;

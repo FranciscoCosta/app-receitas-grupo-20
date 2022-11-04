@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { GiHamburgerMenu } from '@react-icons/all-files/gi/GiHamburgerMenu';
 import { Context } from '../Context/Context';
 import './Category.css';
-import { GiHamburgerMenu } from '@react-icons/all-files/gi/GiHamburgerMenu';
 
 function Category({ page }) {
   const [categorias, setCategorias] = useState([]);
@@ -34,8 +34,6 @@ function Category({ page }) {
 
   const handleClick = ({ target }) => {
     if (target.id === lastCategory) {
-      document.getElementById(`${target.id}`).checked = false;
-      document.getElementById('allRadio').checked = true;
       handleCallApi('default', page).then(() => {
         setCategorySearch(false);
       });

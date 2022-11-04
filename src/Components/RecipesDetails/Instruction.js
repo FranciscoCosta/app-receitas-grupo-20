@@ -2,9 +2,6 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 function Instructions({ ItemIngridients, page, Item }) {
-  const [youtube, setyoutube] = useState(false);
-  const [linkYoutube, setlinkYoutube] = useState('');
-
   const handleYoutube = () => {
     if (page === 'meals' && Item.strYoutube !== undefined) {
       Item.strYoutube = Item.strYoutube.replace('watch?v=', 'embed/');

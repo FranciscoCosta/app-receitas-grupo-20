@@ -5,7 +5,7 @@
   flex-direction: column;
   height: 5.5vh;
   gap: 2rem;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 

@@ -14,7 +14,7 @@ function DoneRecipes({ history }) {
   const [haveData, setHaveData] = useState(false);
 
   const checkLoad = () => {
-    if (done !== []) {
+    if (done.length !== 0) {
       setHaveData(true);
     }
   };
@@ -60,7 +60,13 @@ function DoneRecipes({ history }) {
       <Header title="Done Recipes" perfilBool img />
       {
         !haveData
-          ? <h1>Não tem receita pronta</h1>
+          ? (
+            <h1
+              className="DoneRecepies_noRecepies"
+            >
+              Nenhuma receita foi feita ainda...
+
+            </h1>)
           : (
             <form className="DoneRecipes__container">
               <div className="DoneRecipes__filter">
