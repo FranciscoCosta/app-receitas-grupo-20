@@ -1,0 +1,86 @@
+.Meals {
+  background-color: whitesmoke;
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.Drinks {
+  background-color: whitesmoke;
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.Page__cards {
+  align-items: center;
+  border-radius: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 0.8rem;
+  width: 80%;
+}
+
+.Recipe-container-item {
+  align-items: center;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 22rem;
+  justify-content: center;
+  position: relative;
+  width: 22rem;
+}
+
+.Recipe-container-item img {
+  border-radius: 25px;
+  box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  height: 100%;
+}
+
+.Item__card-name {
+  background-color: rgba(65, 65, 65, 0.8);
+  border-radius: 25px;
+  box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.3);
+  color: white;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 700;
+  height: 2rem;
+  line-height: -5px;
+  overflow: hidden;
+  padding: 10px 30px;
+  position: absolute;
+  text-align: center;
+  text-overflow: clip;
+  text-shadow: 1px 8px 15px rgba(0, 0, 0, 0.1);
+  top: -10px;
+  width: 70%;
+}
+
+.Recipe-container-item:hover {
+  transform: translateY(-7px);
+  transition: 0.5s;
+}
+
+.Item__card-name:hover {
+  height: min-content;
+}
+
+@media screen and (max-width: 600px) {
+  .Recipe-container-item {
+    height: 15rem;
+    width: 15rem;
+  }
+
+  .Item__card-name {
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    padding: 5px 20px;
+    top: -5px;
+  }
+}

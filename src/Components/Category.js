@@ -1,6 +1,8 @@
 import { useEffect, useState, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Context } from '../Context/Context';
+import './Category.css';
+import { GiHamburgerMenu } from '@react-icons/all-files/gi/GiHamburgerMenu';
 
 function Category({ page }) {
   const [categorias, setCategorias] = useState([]);
@@ -48,30 +50,34 @@ function Category({ page }) {
 
   return (
     <div className="Category">
-      <label htmlFor="allRadio">
-        <input
-          type="radio"
-          name="category"
-          id="allRadio"
-          defaultChecked
-          onClick={ handleAll }
-          data-testid="All-category-filter"
-        />
+      <GiHamburgerMenu
+        size={ 50 }
+        className="menu-mobile"
+      />
+
+      <button
+        type="button"
+        name="category"
+        className="Category-button"
+        id="allRadio"
+        onClick={ handleAll }
+        data-testid="All-category-filter"
+      >
         All
-      </label>
+      </button>
       {
         categorias.map(({ strCategory }) => (
-          <label htmlFor={ strCategory } key={ strCategory }>
-            <input
-              data-testid={ `${strCategory}-category-filter` }
-              type="radio"
-              name="category"
-              id={ strCategory }
-              readOnly
-              onClick={ handleClick }
-            />
+
+          <button
+            data-testid={ `${strCategory}-category-filter` }
+            type="button"
+            name="category"
+            className="Category-button"
+            id={ strCategory }
+            onClick={ handleClick }
+          >
             { strCategory }
-          </label>
+          </button>
         ))
       }
     </div>

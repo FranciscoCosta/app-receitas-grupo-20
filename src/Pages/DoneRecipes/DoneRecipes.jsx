@@ -6,7 +6,7 @@ import Header from '../../Components/Header/Header';
 
 function DoneRecipes({ history }) {
   const [done, setDone] = useState([]);
-  const [copied, setcopied] = useState(false);
+  const [itemCopied, setItemCopied] = useState('');
   const [pureData, setpureData] = useState([]);
   const [haveData, setHaveData] = useState(false);
 
@@ -29,7 +29,7 @@ function DoneRecipes({ history }) {
   };
   const handleCopied = (id, type) => {
     copy(`http://localhost:3000/${type}s/${id}`);
-    setcopied(true);
+    setItemCopied(id);
   };
   const handleAll = () => {
     setDone(pureData);
@@ -54,7 +54,7 @@ function DoneRecipes({ history }) {
   }, [haveData]);
   return (
     <div className="DoneRecipes">
-      <Header title="Done Recipes" perfilBool />
+      <Header title="Done Recipes" perfilBool img />
       {
         !haveData
           ? <h1>Não tem receita pronta</h1>
@@ -155,7 +155,7 @@ function DoneRecipes({ history }) {
                         alt="shareButton"
                       />
                     </button>
-                    { (copied) && <p>Link copied!</p> }
+                    { (itemCopied === recipe.id) && <p>{ `http://localhost:3000/${recipe.type}s/${recipe.id}` }</p> }
                     {
                       recipe.tags.map((tag) => (
                         <p

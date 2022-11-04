@@ -67,7 +67,7 @@ function FavoriteRecipes({ history }) {
 
   return (
     <div className="FavoriteRecipes">
-      <Header title="Favorite Recipes" perfilBool />
+      <Header title="Favorite Recipes" perfilBool img />
       {
         !haveData
           ? <h1>Não tem receita pronta</h1>

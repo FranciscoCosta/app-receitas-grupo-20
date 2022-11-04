@@ -6,8 +6,12 @@
     "node": "16"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "aos": "^3.0.0-beta.6",
     "bootstrap": "^5.2.0",
     "clipboard-copy": "^4.0.1",
+    "crypto-js": "^4.1.1",
+    "md5": "^2.3.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",

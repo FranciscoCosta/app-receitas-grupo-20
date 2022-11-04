@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RecipeDetails from '../../Components/RecipesDetails/RecipeDetails';
+import Footer from '../../Components/Footer/Footer';
 
 function DetailsMeals({ history }) {
   return (
-    <div className="DeatailsMeals">
-      <RecipeDetails page="meals" history={ history } notPages="drinks" />
+    <div className="DetailsMeals">
+      <RecipeDetails page="meals" img history={ history } notPages="drinks" />
+      <Footer showMeals />
     </div>
   );
 }

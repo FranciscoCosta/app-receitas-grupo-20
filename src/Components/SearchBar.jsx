@@ -18,6 +18,7 @@ function SearchBar(type) {
           <label htmlFor="search-ingredient">
             Ingredient
             <input
+              className="Radio"
               type="radio"
               name="search"
               data-testid="ingredient-search-radio"
@@ -28,6 +29,7 @@ function SearchBar(type) {
           <label htmlFor="search-name">
             Name
             <input
+              className="Radio"
               type="radio"
               name="search"
               data-testid="name-search-radio"
@@ -38,6 +40,7 @@ function SearchBar(type) {
           <label htmlFor="search-first-letter">
             First-letter
             <input
+              className="Radio"
               type="radio"
               name="search"
               data-testid="first-letter-search-radio"
@@ -56,6 +59,7 @@ function SearchBar(type) {
             value={ search }
           />
           <button
+            className="Search-sub"
             type="button"
             data-testid="exec-search-btn"
             onClick={ () => handleCallApi(raidoInput, typeOfApiCall, search) }

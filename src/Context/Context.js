@@ -2,19 +2,17 @@ import React, { createContext, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 export const Context = createContext();
-
 function Provider({ children }) {
   const [dataApi, setdataApi] = useState([]);
   const [categorySearch, setCategorySearch] = useState(false);
   const [ItemIngridients, setItemIngridients] = useState([]);
   const [Item, setitemPage] = useState({});
-
+  const [userImg, setUserImg] = useState('');
   const fetchApi = async (url) => {
     const response = await fetch(url);
     const json = await response.json();
     return response.ok && Promise.resolve(json);
   };
-
   const fetchItem = useMemo(
     () => async (page, id) => {
       const apis = {
@@ -38,7 +36,6 @@ function Provider({ children }) {
     },
     [],
   );
-
   const handleCallApi = useMemo(() => async (type, typeOfApiCall, search = '') => {
     const apiObj = {
       meals: {
@@ -67,49 +64,6 @@ function Provider({ children }) {
       setdataApi(data);
     }
   }, []);
-  // console.log(type, typeOfApiCall, search);
-  // if (typeOfApiCall === 'Meals') {
-  //   if (type === 'ingredient') {
-  //     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${search}`;
-  //     const data = await fetchApi(url);
-  //     console.log(data);
-  //   }
-  //   if (type === 'name') {
-  //     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`;
-  //     const data = await fetchApi(url);
-  //     console.log(data);
-  //   }
-  //   if (type === 'first-letter') {
-  //     if (search.length > 1) {
-  //       global.alert('Your search must have only 1 (one) character');
-  //     } else {
-  //       const url = `https://www.themealdb.com/api/json/v1/1/search.php?f=${search}`;
-  //       const data = await fetchApi(url);
-  //       console.log(data);
-  //     }
-  //   }
-  // } if (typeOfApiCall === 'Drinks') {
-  //   if (type === 'ingredient') {
-  //     const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${search}`;
-  //     const data = await fetchApi(url);
-  //     console.log(data);
-  //   }
-  //   if (type === 'name') {
-  //     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
-  //     const data = await fetchApi(url);
-  //     console.log(data);
-  //   }
-  //   if (type === 'first-letter') {
-  //     if (search.length > 1) {
-  //       global.alert('Your search must have only 1 (one) character');
-  //     } else {
-  //       const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${search}`;
-  //       const data = await fetchApi(url);
-  //       console.log(data);
-  //     }
-  //   }
-  // }
-
   const context = useMemo(
     () => ({
       handleCallApi,
@@ -120,17 +74,15 @@ function Provider({ children }) {
       ItemIngridients,
       Item,
       fetchItem,
-
+      userImg,
+      setUserImg,
     }),
     [dataApi, categorySearch, setCategorySearch,
-      handleCallApi, ItemIngridients, Item, fetchItem],
+      handleCallApi, ItemIngridients, Item, fetchItem, userImg, setUserImg],
   );
-
   return <Context.Provider value={ context }>{children}</Context.Provider>;
 }
-
 Provider.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
 export default Provider;

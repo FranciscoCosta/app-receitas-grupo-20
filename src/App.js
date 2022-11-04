@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
+import AOS from 'aos';
 import {
   Login,
   Meals,
@@ -13,8 +14,10 @@ import {
   RecipeMeals,
   RecipeDrinks,
 } from './Pages';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
 
 function App() {
+  AOS.init();
   return (
     <Switch>
       <Route exact path="/" component={ Login } />

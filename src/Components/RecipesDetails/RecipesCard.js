@@ -48,14 +48,23 @@ function RecipesCard({ Item, pages, page, loading }) {
   return (
     <section className="RecipesCard">
       {loading && (
-        <>
-          <div className="Item-Details-img">
+        <div
+          data-aos="zoom-in"
+          data-aos-delay="50"
+          data-aos-duration="750"
+          data-aos-anchor-placement="top-center"
+          className="Item-Details-img"
+        >
+          <div className="Item-container-img">
             <img
               src={ Item[`str${pages}Thumb`] }
               alt={ Item[`str${pages}`] }
               data-testid="recipe-photo"
+              className="item-img"
             />
 
+          </div>
+          <div className="Recipe__card-like">
             <button
               type="button"
               onClick={ handleFavorite }
@@ -65,21 +74,38 @@ function RecipesCard({ Item, pages, page, loading }) {
                 src={ coracaoImg }
                 alt="img de coração"
                 data-testid="favorite-btn"
+                className="favorite-btn"
               />
             </button>
+            <h2
+              className="Recipe-card-title"
+              data-testid="recipe-title"
+            >
+              {Item[`str${pages}`]}
+
+            </h2>
 
           </div>
 
-          <h2 data-testid="recipe-title">{Item[`str${pages}`]}</h2>
           {page === 'meals' ? (
-            <h4 data-testid="recipe-category">{Item.strCategory}</h4>
+            <h4
+              className="Recipe-item-category"
+              data-testid="recipe-category"
+            >
+              Category:
+              {' '}
+              {Item.strCategory}
+            </h4>
           ) : (
-            <h4 data-testid="recipe-category">
+            <h4
+              className="Recipe-item-category"
+              data-testid="recipe-category"
+            >
               {Item.strCategory}
               {Item.strAlcoholic}
             </h4>
           )}
-        </>)}
+        </div>)}
     </section>
   );
 }

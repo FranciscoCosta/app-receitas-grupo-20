@@ -1,34 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes, { string } from 'prop-types';
 import { Link } from 'react-router-dom';
-import perfil from '../../images/profileIcon.svg';
 import search from '../../images/searchIcon.svg';
 import SearchBar from '../SearchBar';
+import { Context } from '../../Context/Context';
 import './Header.css';
+import logo from '../../images/bgT.png';
 
-function Header({ title, perfilBool, searchBool, type }) {
+function Header({ title, perfilBool, searchBool, type, img }) {
+  const { userImg } = useContext(Context);
   const [inputSearch, setinputSearch] = useState(false);
   return (
     <section>
       <div className="Header">
-        <h1 data-testid="page-title">{title}</h1>
-        {perfilBool && (
-          <Link to="/profile">
-            <img src={ perfil } alt="perfil-icon" data-testid="profile-top-btn" />
-          </Link>
+        {img && (
+          <div className="Logo-container">
+            <img src={ logo } alt="logo" />
+          </div>
         )}
-
-        {searchBool
-      && (
-        <button
-          type="button"
-          onClick={ () => { setinputSearch(!inputSearch); } }
+        <h1
+          className="Page__title"
+          data-testid="page-title"
         >
-          <img src={ search } alt="search-icon" data-testid="search-top-btn" />
-        </button>
-      ) }
+          { title }
+
+        </h1>
+
+        { perfilBool && (
+          <Link to="/profile">
+            <img
+              src={ userImg }
+              alt="perfil-icon"
+              data-testid="profile-top-btn"
+              style={ { borderRadius: '10px' } }
+            />
+          </Link>
+        ) }
       </div>
-      { (inputSearch) && <SearchBar type={ type } />}
+      { searchBool
+          && (
+            <div className="search-container">
+              <button
+                type="button"
+                onClick={ () => { setinputSearch(!inputSearch); } }
+              >
+                <img src={ search } alt="search-icon" data-testid="search-top-btn" />
+              </button>
+
+            </div>
+          ) }
+      { (inputSearch) && <SearchBar type={ type } /> }
     </section>
   );
 }
@@ -37,12 +58,10 @@ Header.defaultProps = {
   searchBool: undefined,
   type: string,
 };
-
 Header.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string.isRequired,
   perfilBool: PropTypes.bool,
   searchBool: PropTypes.bool,
 };
-
 export default Header;

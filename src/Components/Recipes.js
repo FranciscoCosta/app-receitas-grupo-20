@@ -27,26 +27,36 @@ function Recipes({ history, page }) {
     }
   }, [dataApi, history, page, categorySearch, key]);
   return (
-    <div data-testid={ `${key}__cards` } className={ `${key}__cards` }>
+    <div data-testid="Recipe__container-cards" className="Page__cards">
       {produtos.map((curr, index) => (
         <div
+          data-aos="zoom-in"
+          data-aos-delay="50"
+          data-aos-duration="750"
+          data-aos-easing="ease-in-out"
+          data-aos-mirror="true"
+          data-aos-once="false"
+          data-aos-anchor-placement="top-center"
           role="button"
           tabIndex="0"
           onKeyPress={ () => {} }
-          className={ `${key}__card-info` }
+          className="Recipe__card-info"
           data-testid={ `${index}-recipe-card` }
           key={ curr[`id${key}`] }
           onClick={ () => history.push(`/${page}/${curr[`id${key}`]}`) }
         >
-          <img
-            className={ `${key}__card-img` }
-            src={ curr[`str${key}Thumb`] }
-            alt={ curr[`str${key}`] }
-            data-testid={ `${index}-card-img` }
-          />
-          <p className={ `${key}__card-tags` } data-testid={ `${index}-card-name` }>
-            {curr[`str${key}`]}
-          </p>
+          <div className="Recipe-container-item">
+            <img
+              className={ `${key}__card-img` }
+              src={ curr[`str${key}Thumb`] }
+              alt={ curr[`str${key}`] }
+              data-testid={ `${index}-card-img` }
+            />
+            <p className="Item__card-name" data-testid={ `${index}-card-name` }>
+              {curr[`str${key}`]}
+            </p>
+
+          </div>
         </div>
       ))}
     </div>

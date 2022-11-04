@@ -1,30 +1,120 @@
 .Header {
-  align-content: space-between;
-  align-items: flex-start;
-  background-color: red;
+  margin: 0 auto;
+  width: 90%;
   display: flex;
-  height: 5.5vh;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.Header a, button, img {
-  height: 5vh;
-  padding: 1px;
-  width: auto;
+.Page__title {
+  font-size: 5rem;
+  align-self: center;
+  margin-right: 15rem;
 }
 
-.Header a {
-  margin-left: auto;
+.Logo-container {
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.Header button {
-  background-color: inherit;
-  border: 0;
+.Logo-container img {
+  width: 100%;
+  height: 100%;
 }
 
-.Header h1 {
-  height: inherit;
-  left: auto;
-  margin: 0;
-  width: 40vw;
+.search-container {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.search-container button {
+  border: none;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.SearchBar__form {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.SearchBar__input {
+  background-color: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 2.5rem;
+  letter-spacing: 0.5px;
+  padding: 8px 10px;
+  transition: all 0.3s ease 0s;
+  width: 20rem;
+}
+
+.SearchBar__input:focus {
+  border: 1px solid #2ee59d;
+  outline: 1px solid #2ee59d;
+}
+
+.Search-sub {
+  align-self: center;
+  background-color: #2fc18c;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 60px;
+  letter-spacing: 2.5px;
+  margin-top: 1rem;
+  outline: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+  width: 160px;
+}
+
+.Search-sub:hover {
+  background-color: #2ee59d;
+  box-shadow: 1px 15px 20px rgba(255, 255, 255, 0.4);
+  color: white;
+  transform: translateY(-7px);
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+.Radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+
+input:checked {
+  background-color: #2ee59d;
+  border: 6px solid #2ee59d;
+  outline: unset !important; /* I added this one for Edge (chromium) support */
+}
