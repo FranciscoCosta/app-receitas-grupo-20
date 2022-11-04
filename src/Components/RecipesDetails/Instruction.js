@@ -6,13 +6,8 @@ function Instructions({ ItemIngridients, page, Item }) {
   const [linkYoutube, setlinkYoutube] = useState('');
 
   const handleYoutube = () => {
-    console.log(Item);
-    if (Item.StrYoutube !== undefined) {
-      const regex = /watch?v=/;
-      const link = Item.StrYoutube.replace(regex, 'embed/');
-      setlinkYoutube(link);
-      setyoutube(true);
-      console.log(linkYoutube, youtube, Item);
+    if (page === 'meals' && Item.strYoutube !== undefined) {
+      Item.strYoutube = Item.strYoutube.replace('watch?v=', 'embed/');
     }
   };
 
@@ -54,15 +49,16 @@ function Instructions({ ItemIngridients, page, Item }) {
 
       </p>
 
-      {(page === 'meals' && Item.length !== 0) && (
-        <div>
-          {}
+      {console.log(Item.strYoutube)}
+      {(page === 'meals') && (
+        <div className="container-video">
           <iframe
-            src={ Item.StrYoutube }
+            src={ Item.strYoutube }
             frameBorder="0"
-            // allow="autoplay; encrypted-media"
+            allow="autoplay; encrypted-media"
             title="video"
             data-testid="video"
+            className="video"
           />
         </div>
       )}

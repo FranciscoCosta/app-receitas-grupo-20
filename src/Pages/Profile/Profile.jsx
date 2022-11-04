@@ -29,6 +29,7 @@ function Profile({ history }) {
   }, []);
   return (
     <div className="Profile">
+      <Header title="Profile" perfilBool />
       <div
         data-aos="fade-up"
         data-aos-offset="200"
@@ -41,9 +42,9 @@ function Profile({ history }) {
         className="Profile__container"
       >
 
-        <Header title="Profile" perfilBool />
         <form className="Profile-form">
           <h2
+            className="profile-email"
             data-testid="profile-email"
           >
             { email }

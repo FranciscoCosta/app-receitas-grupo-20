@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RecipesInProg from '../../Components/RecepiesInPro/RecepiesInProg';
 import Footer from '../../Components/Footer/Footer';
+import './RecipeMeals.css';
 
 function RecipeMeals({ history }) {
   return (

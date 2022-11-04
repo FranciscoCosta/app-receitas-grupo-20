@@ -1,50 +1,50 @@
 .Header {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
   margin: 0 auto;
   width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 
 .Page__title {
-  font-size: 5rem;
   align-self: center;
+  font-size: 5rem;
   margin-right: 15rem;
 }
 
 .Logo-container {
-  width: 20rem;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
+  width: 20rem;
 }
 
 .Logo-container img {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 .search-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .search-container button {
-  border: none;
   background-color: whitesmoke;
+  border: none;
   cursor: pointer;
 }
 
 .SearchBar__form {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
   margin: 0 auto;
   width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
 }
 
 .SearchBar__input {
@@ -97,24 +97,21 @@ label {
 }
 
 .Radio {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-
+  appearance: none;
+  appearance: none;
   border: 2px solid #999;
-  transition: 0.2s all linear;
+  border-radius: 50%;
+  height: 30px;
   margin-right: 5px;
-
   position: relative;
   top: 4px;
+  transition: 0.2s all linear;
+  width: 30px;
 }
 
 input:checked {
   background-color: #2ee59d;
   border: 6px solid #2ee59d;
-  outline: unset !important; /* I added this one for Edge (chromium) support */
+  outline: unset ! important; /* I added this one for Edge (chromium) support */
 }

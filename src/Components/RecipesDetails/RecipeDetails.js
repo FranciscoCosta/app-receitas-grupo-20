@@ -68,7 +68,14 @@ function RecipeDetails({ page, notPages, history }) {
         Share
       </button>
 
-      {(copied) && <p>Link copied!</p>}
+      {(copied) && (
+        <p
+          className="copied"
+        >
+          Link copied!
+
+        </p>
+      )}
 
       <Carousel
         loading={ loading }

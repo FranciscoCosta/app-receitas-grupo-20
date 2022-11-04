@@ -7,8 +7,12 @@ import { GiHamburgerMenu } from '@react-icons/all-files/gi/GiHamburgerMenu';
 function Category({ page }) {
   const [categorias, setCategorias] = useState([]);
   const [lastCategory, setLastCategory] = useState('');
+  const [showing, setshowing] = useState(false);
 
   const { handleCallApi, setCategorySearch } = useContext(Context);
+  const handleToggle = () => {
+    setshowing(!showing);
+  };
 
   const apis = useMemo(() => ({
     meals: 'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
@@ -53,6 +57,7 @@ function Category({ page }) {
       <GiHamburgerMenu
         size={ 50 }
         className="menu-mobile"
+        onClick={ handleToggle }
       />
 
       <button
@@ -62,6 +67,7 @@ function Category({ page }) {
         id="allRadio"
         onClick={ handleAll }
         data-testid="All-category-filter"
+        hidden={ showing }
       >
         All
       </button>
@@ -75,6 +81,7 @@ function Category({ page }) {
             className="Category-button"
             id={ strCategory }
             onClick={ handleClick }
+            hidden={ showing }
           >
             { strCategory }
           </button>

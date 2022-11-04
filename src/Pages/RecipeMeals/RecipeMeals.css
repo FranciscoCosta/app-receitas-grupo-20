@@ -1,0 +1,7 @@
+.RecipeMeals {
+  backdrop-filter: blur(2px);
+  background: url(../../images/kitchenbg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

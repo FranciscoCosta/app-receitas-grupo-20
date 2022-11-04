@@ -85,9 +85,13 @@ function RecipesInProg({ page, pages, history }) {
     setcopied(true);
   };
   return (
-    <div>
+    <div className="InProgress">
+      <h1 className="Recipe__InProgress-title">Recipe In Progress</h1>
       <RecipesCard Item={ Item } pages={ pages } page={ page } />
-      <section data-testid="instructions">
+      <section
+        className="InProgress__instructions"
+        data-testid="instructions"
+      >
         {
           ItemIngridients.map(([ingredient, value], index) => (
             <label
@@ -115,8 +119,16 @@ function RecipesInProg({ page, pages, history }) {
         Share
       </button>
 
-      {(copied) && <p>Link copied!</p>}
+      {(copied) && (
+        <p
+          className="copied"
+        >
+          Link copied!
+
+        </p>
+      )}
       <button
+        className="Finish-btn"
         type="button"
         data-testid="finish-recipe-btn"
         disabled={ ItemIngridients.length !== checkeds.length }
