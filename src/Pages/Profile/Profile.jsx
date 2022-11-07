@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import './Profile.css';
 import { AiFillHeart } from '@react-icons/all-files/ai/AiFillHeart';
 import { AiFillCheckCircle } from '@react-icons/all-files/ai/AiFillCheckCircle';
 import { AiOutlineLogout } from '@react-icons/all-files/ai/AiOutlineLogout';
-import Header from '../../Components/Header/Header';
+import { Context } from '../../Context/Context';
 
 function Profile({ history }) {
   const [email, setEmail] = useState('email');
+  const { userImg } = useContext(Context);
 
   const getEmailLocalStorage = () => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -27,7 +28,6 @@ function Profile({ history }) {
   }, []);
   return (
     <div className="Profile">
-      <Header title="Profile" perfilBool />
       <div
         data-aos="fade-up"
         data-aos-offset="200"
@@ -41,6 +41,7 @@ function Profile({ history }) {
       >
 
         <form className="Profile-form">
+          <img src={ userImg } alt="profile-pic" className="Profile__img" />
           <h2
             className="profile-email"
             data-testid="profile-email"

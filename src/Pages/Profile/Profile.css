@@ -44,8 +44,13 @@
   transition: 0.5s;
 }
 
-@media screen and ( max-width : 600px ) {
+.Profile__img {
+  border-radius: 12px;
+  box-shadow: 1px 15px 20px rgba(0, 0, 0, 0.3);
+  width: 100px;
+}
 
+@media screen and (max-width: 600px) {
   .Profile-form {
     border-radius: 1px;
     height: 100vh;
@@ -62,4 +67,8 @@
   .profile-email {
     font-size: 0.8rem;
   }
+}
+
+.Profile-header {
+  border: 2px solid black;
 }
