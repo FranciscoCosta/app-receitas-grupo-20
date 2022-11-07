@@ -1,5 +1,4 @@
-.DetailsMeals,
-.DetailsDrinks {
+.DetailsMeals, .DetailsDrinks {
   backdrop-filter: blur(5px);
   background: url(../../images/bg123.png);
   background-position: center;
@@ -179,14 +178,14 @@ span {
 }
 
 .copied {
-  font-size: 1.5rem;
-  box-shadow: 1px 10px 15px rgba(0, 0, 0, 0.55);
   background-color: #2ee59d;
-  padding: 10px;
   border-radius: 8px;
+  box-shadow: 1px 10px 15px rgba(0, 0, 0, 0.55);
+  font-size: 1.5rem;
+  padding: 10px;
 }
 
 .Carousel-Sugestion-title {
-  text-align: center;
   font-size: 2rem;
+  text-align: center;
 }

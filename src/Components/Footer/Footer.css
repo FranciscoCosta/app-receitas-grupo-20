@@ -1,12 +1,12 @@
 .Footer {
-  top: 50%;
-  margin-left: 2rem;
   display: flex;
   flex-direction: column;
-  height: 5.5vh;
   gap: 2rem;
+  height: 5.5vh;
+  margin-left: 2rem;
   position: fixed;
-  width: 100%;
+  top: 50%;
+  width: max-content;
 }
 
 .Footer img {
@@ -29,4 +29,13 @@
 
 .footer-icon-h {
   transform: translateY(-7px);
+}
+
+.container-btn-footer {
+  background: rgba(255, 255, 255, 0);
+  width: min-content;
+}
+
+.Footer a {
+  background: rgba(255, 255, 255, 0);
 }

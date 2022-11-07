@@ -17,9 +17,9 @@
 
 .DoneRecepies_noRecepies {
   align-items: center;
-  margin-top: 15%;
   display: flex;
   justify-content: center;
+  margin-top: 15%;
 }
 
 .DoneRecipes__container-item {

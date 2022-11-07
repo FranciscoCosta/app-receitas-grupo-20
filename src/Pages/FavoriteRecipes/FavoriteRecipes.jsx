@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import copy from 'clipboard-copy';
 import PropTypes from 'prop-types';
-import { GiShare } from '@react-icons/all-files/gi/GiShare';
-import shareIcon from '../../images/shareIcon.svg';
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+} from 'react-share';
 import Header from '../../Components/Header/Header';
 import blackHeart from '../../images/blackHeartIcon.svg';
 import './FavoriteRecipes.css';
@@ -174,27 +178,21 @@ function FavoriteRecipes({ history }) {
                         </h2>
                       </label>
                       <div className="social-btn">
-                        <GiShare
-                          size="70"
-                          type="button"
-                          name={ `share${index}` }
-                          id={ `share${index}` }
-                          onClick={ () => handleCopied(recipe.id, recipe.type) }
+                        <FacebookShareButton
+                          url={ `http://localhost:3000/${recipe.type}s/${recipe.id}` }
+                          quote="One of my favorite recipes ...."
+                          hashtag="#Recipes..."
                         >
-                          <img
-                            data-testid={ `${index}-horizontal-share-btn` }
-                            src={ shareIcon }
-                            alt="shareButton"
-                          />
-                        </GiShare>
-                        {(copied) && (
-                          <p
-                            className="copied"
-                          >
-                            Link copied!
+                          <FacebookIcon size={ 40 } round />
+                        </FacebookShareButton>
 
-                          </p>
-                        )}
+                        <WhatsappShareButton
+                          url={ `http://localhost:3000/${recipe.type}s/${recipe.id}` }
+                          quote="One of my favorite recipes ...."
+                          hashtag="#Recipes..."
+                        >
+                          <WhatsappIcon size={ 40 } round />
+                        </WhatsappShareButton>
 
                         <button
                           type="button"

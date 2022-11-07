@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './RecipeDetails.css';
 import copy from 'clipboard-copy';
-import { GiShare } from '@react-icons/all-files/gi/GiShare';
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+} from 'react-share';
 
 import Share from '../../images/shareIcon.svg';
 import RecipesCard from './RecipesCard';
@@ -60,25 +65,23 @@ function RecipeDetails({ page, notPages, history }) {
 
       <Instructions ItemIngridients={ ItemIngridients } page={ page } Item={ Item } />
 
-      <GiShare
-        size="60"
-        type="button"
-        data-testid="share-btn"
-        onClick={ handleCopied }
-      >
-        <img src={ Share } alt="share-btn" />
-        Share
-      </GiShare>
-
-      {(copied) && (
-        <p
-          className="copied"
+      <div className="social-btn">
+        <FacebookShareButton
+          url={ `http://localhost:3000/${page}/${id}` }
+          quote="One of my favorite recipes ...."
+          hashtag="#Recipes..."
         >
-          Link copied!
+          <FacebookIcon size={ 40 } round />
+        </FacebookShareButton>
 
-        </p>
-      )}
-
+        <WhatsappShareButton
+          url={ `http://localhost:3000/${page}/${id}` }
+          quote="One of my favorite recipes ...."
+          hashtag="#Recipes..."
+        >
+          <WhatsappIcon size={ 40 } round />
+        </WhatsappShareButton>
+      </div>
       <Carousel
         loading={ loading }
         recomendation={ recomendation }

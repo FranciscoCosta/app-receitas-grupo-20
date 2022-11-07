@@ -30,7 +30,7 @@ function Footer({ showMeals, showDrinks }) {
       {
         sMeals
         && (
-          <div>
+          <div className="container-btn-footer">
             <Link
               className="mealsLink"
               to="/meals"
@@ -41,6 +41,7 @@ function Footer({ showMeals, showDrinks }) {
                 src={ mealIcon }
                 alt="footer-icon-meals"
                 data-testid="meals-bottom-btn"
+                className="footer-icon-h"
               />
             </Link>
           </div>
@@ -49,7 +50,7 @@ function Footer({ showMeals, showDrinks }) {
       {
         sDrinks
         && (
-          <div>
+          <div className="container-btn-footer">
             <Link to="/drinks">
               <RiCupFill
                 size={ 70 }
@@ -57,6 +58,7 @@ function Footer({ showMeals, showDrinks }) {
                 src={ drinkIcon }
                 alt="footer-icon-drinks"
                 data-testid="drinks-bottom-btn"
+                className="footer-icon-h"
               />
             </Link>
           </div>

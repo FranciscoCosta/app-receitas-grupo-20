@@ -2,10 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
-import { GiShare } from '@react-icons/all-files/gi/GiShare';
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+} from 'react-share';
 import RecipesCard from '../RecipesDetails/RecipesCard';
 import { Context } from '../../Context/Context';
-import Share from '../../images/shareIcon.svg';
 import './recepiesInProg.css';
 
 function RecipesInProg({ page, pages, history }) {
@@ -109,25 +113,23 @@ function RecipesInProg({ page, pages, history }) {
           ))
         }
       </section>
-
-      <GiShare
-        size="70"
-        type="button"
-        data-testid="share-btn"
-        onClick={ handleCopied }
-      >
-        <img src={ Share } alt="share-btn" />
-        Share
-      </GiShare>
-
-      {(copied) && (
-        <p
-          className="copied"
+      <div className="social-btn">
+        <FacebookShareButton
+          url={ `http://localhost:3000/${page}/${id}` }
+          quote="One of my favorite recipes ...."
+          hashtag="#Recipes..."
         >
-          Link copied!
+          <FacebookIcon size={ 40 } round />
+        </FacebookShareButton>
 
-        </p>
-      )}
+        <WhatsappShareButton
+          url={ `http://localhost:3000/${page}/${id}` }
+          quote="One of my favorite recipes ...."
+          hashtag="#Recipes..."
+        >
+          <WhatsappIcon size={ 40 } round />
+        </WhatsappShareButton>
+      </div>
       <button
         className="Finish-btn"
         type="button"

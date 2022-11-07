@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import copy from 'clipboard-copy';
 import PropTypes from 'prop-types';
-import { GiShare } from '@react-icons/all-files/gi/GiShare';
-import shareIcon from '../../images/shareIcon.svg';
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+} from 'react-share';
 import Header from '../../Components/Header/Header';
 import './DoneRecipes.css';
 import Footer from '../../Components/Footer/Footer';
@@ -14,7 +18,7 @@ function DoneRecipes({ history }) {
   const [haveData, setHaveData] = useState(false);
 
   const checkLoad = () => {
-    if (done.length !== 0) {
+    if (done !== []) {
       setHaveData(true);
     }
   };
@@ -165,26 +169,23 @@ function DoneRecipes({ history }) {
                           { recipe.doneDate }
                         </h6>
                       </label>
-                      <GiShare
-                        size="70"
-                        name={ `share${index}` }
-                        id={ `share${index}` }
-                        onClick={ () => handleCopied(recipe.id, recipe.type) }
-                      >
-                        <img
-                          data-testid={ `${index}-horizontal-share-btn` }
-                          src={ shareIcon }
-                          alt="shareButton"
-                        />
-                      </GiShare>
-                      { (itemCopied === recipe.id) && (
-                        <p
-                          className="copied"
+                      <div className="social-btn">
+                        <FacebookShareButton
+                          url={ `http://localhost:3000/${recipe.type}s/${recipe.id}` }
+                          quote="One of my favorite recipes ...."
+                          hashtag="#Recipes..."
                         >
-                          Link copied!
-                        </p>
-                      ) }
+                          <FacebookIcon size={ 40 } round />
+                        </FacebookShareButton>
 
+                        <WhatsappShareButton
+                          url={ `http://localhost:3000/${recipe.type}s/${recipe.id}` }
+                          quote="One of my favorite recipes ...."
+                          hashtag="#Recipes..."
+                        >
+                          <WhatsappIcon size={ 40 } round />
+                        </WhatsappShareButton>
+                      </div>
                       {
                         recipe.tags.map((tag) => (
                           <h6
