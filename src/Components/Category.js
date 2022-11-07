@@ -70,13 +70,14 @@ function Category({ page }) {
         All
       </button>
       {
-        categorias.map(({ strCategory }) => (
+        categorias.map(({ strCategory, index }) => (
 
           <button
             data-testid={ `${strCategory}-category-filter` }
             type="button"
             name="category"
             className="Category-button"
+            key={ `${strCategory}-${index}` }
             id={ strCategory }
             onClick={ handleClick }
             hidden={ showing }

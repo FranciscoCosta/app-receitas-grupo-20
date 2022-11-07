@@ -56,6 +56,7 @@ function Header({ title, perfilBool, searchBool, type, img }) {
 Header.defaultProps = {
   perfilBool: undefined,
   searchBool: undefined,
+  img: undefined,
   type: string,
 };
 Header.propTypes = {
@@ -63,5 +64,7 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   perfilBool: PropTypes.bool,
   searchBool: PropTypes.bool,
+  img: PropTypes.symbol,
+
 };
 export default Header;

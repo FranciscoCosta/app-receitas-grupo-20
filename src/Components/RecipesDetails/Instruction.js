@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 function Instructions({ ItemIngridients, page, Item }) {
   const handleYoutube = () => {

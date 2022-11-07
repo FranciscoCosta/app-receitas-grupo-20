@@ -7,9 +7,6 @@ import mealIcon from '../../images/mealIcon.svg';
 import drinkIcon from '../../images/drinkIcon.svg';
 import './Footer.css';
 
-RiCupFill;
-// GiHotMeal;
-
 function Footer({ showMeals, showDrinks }) {
   const [sMeals, setShowMeals] = useState(false);
   const [sDrinks, setShowDrinks] = useState(false);

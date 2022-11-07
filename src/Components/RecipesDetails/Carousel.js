@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
-import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 function Carousel({ loading, recomendation, recomendationP, keys }) {

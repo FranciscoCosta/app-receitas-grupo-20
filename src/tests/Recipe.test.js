@@ -5,7 +5,7 @@ import App from '../App';
 import renderWithRouter from './renderWithRouter';
 import Provider from '../Context/Context';
 // import RecipesCard from '../Components/RecipesDetails/RecipesCard';
-
+startRecipe = 'start-recipe-btn';
 const drinksURl = '/drinks/15997';
 
 const searchButton = 'search-top-btn';
@@ -131,7 +131,7 @@ test('Test if sends to in pogress', async () => {
     </Provider>,
     [drinksURl],
   );
-  const start = screen.getByTestId('start-recipe-btn');
+  const start = screen.getByTestId();
   userEvent.click(start);
   await waitFor(() => {
     const { pathname } = history.location;
@@ -146,7 +146,7 @@ test('Test if sends to in pogress', async () => {
     </Provider>,
     ['/meals/52977'],
   );
-  const start = screen.getByTestId('start-recipe-btn');
+  const start = screen.getByTestId(startRecipe);
   userEvent.click(start);
   await waitFor(() => {
     const { pathname } = history.location;
@@ -199,7 +199,7 @@ describe('testa os componentes da tela de ingredientes', () => {
       </Provider>,
       [drinksURl],
     );
-    const iniciarBtn = await screen.findByTestId('start-recipe-btn');
+    const iniciarBtn = await screen.findByTestId(startRecipe);
     expect(iniciarBtn).toBeInTheDocument();
 
     userEvent.click(iniciarBtn);

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import copy from 'clipboard-copy';
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -18,7 +17,6 @@ function RecipesInProg({ page, pages, history }) {
   const { fetchItem, ItemIngridients, Item } = useContext(Context);
   const { id } = useParams();
 
-  const [copied, setcopied] = useState(false);
   useEffect(() => {
     const inProg = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
     if (inProg[id] && ItemIngridients.length > 0) {
@@ -84,10 +82,6 @@ function RecipesInProg({ page, pages, history }) {
     history.push('/done-recipes');
   };
 
-  const handleCopied = () => {
-    copy(`http://localhost:3000/${page}/${id}`);
-    setcopied(true);
-  };
   return (
     <div className="InProgress">
       <h1 className="Recipe__InProgress-title">Recipe In Progress</h1>

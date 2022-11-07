@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import copy from 'clipboard-copy';
 import PropTypes from 'prop-types';
 import {
   FacebookShareButton,
@@ -14,7 +13,6 @@ import Footer from '../../Components/Footer/Footer';
 
 function FavoriteRecipes({ history }) {
   const [done, setDone] = useState([]);
-  const [copied, setcopied] = useState(false);
   const [pureData, setpureData] = useState([]);
   const [haveData, setHaveData] = useState(false);
 
@@ -45,11 +43,6 @@ function FavoriteRecipes({ history }) {
       setpureData(data);
     }
     checkLoad();
-  };
-
-  const handleCopied = (id, type) => {
-    copy(`http://localhost:3000/${type}s/${id}`);
-    setcopied(true);
   };
   const handleAll = () => {
     setDone(pureData);

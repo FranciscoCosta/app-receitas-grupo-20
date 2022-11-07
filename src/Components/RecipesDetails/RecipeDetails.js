@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './RecipeDetails.css';
-import copy from 'clipboard-copy';
 import {
   FacebookShareButton,
   WhatsappShareButton,
@@ -10,16 +9,12 @@ import {
   FacebookIcon,
 } from 'react-share';
 
-import Share from '../../images/shareIcon.svg';
 import RecipesCard from './RecipesCard';
 import Instructions from './Instruction';
 import Carousel from './Carousel';
 import { Context } from '../../Context/Context';
 
 function RecipeDetails({ page, notPages, history }) {
-  const { location: { pathname } } = history;
-
-  const [copied, setcopied] = useState(false);
   const [recomendation, setrecomendation] = useState([]);
   const [loading, setloading] = useState(false);
   const [keys, setKey] = useState('');
@@ -28,11 +23,6 @@ function RecipeDetails({ page, notPages, history }) {
   const { id } = useParams();
   const { handleCallApi, dataApi,
     ItemIngridients, Item, fetchItem } = useContext(Context);
-
-  const handleCopied = () => {
-    copy(`http://localhost:3000${pathname}`);
-    setcopied(true);
-  };
 
   useEffect(() => {
     if (recomendation.length === 0) {

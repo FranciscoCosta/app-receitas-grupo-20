@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Header from '../../Components/Header/Header';
-import Footer from '../../Components/Footer/Footer';
 import './Profile.css';
 import { AiFillHeart } from '@react-icons/all-files/ai/AiFillHeart';
 import { AiFillCheckCircle } from '@react-icons/all-files/ai/AiFillCheckCircle';
 import { AiOutlineLogout } from '@react-icons/all-files/ai/AiOutlineLogout';
+import Header from '../../Components/Header/Header';
 
-AiOutlineLogout;
 function Profile({ history }) {
   const [email, setEmail] = useState('email');
 

@@ -5,6 +5,8 @@ import App from '../App';
 import Provider from '../Context/Context';
 import renderWithRouter from './renderWithRouter';
 
+const pathRecipes = '/done-recipes';
+const pathHorizontal = '0-horizontal-name';
 const dataMock = [
   {
     id: '52771',
@@ -31,7 +33,7 @@ const dataMock = [
 ];
 
 describe('Done Recipes page tests', () => {
-  test('Test if pathname `/done-recipes` exists', async () => {
+  test('Test if pathname `/done-recipes 12` exists', async () => {
     const { history } = renderWithRouter(
       <Provider>
         <App />
@@ -42,16 +44,16 @@ describe('Done Recipes page tests', () => {
     userEvent.click(btnDoneRecipes);
     await waitFor(() => {
       const { pathname } = history.location;
-      expect(pathname).toBe('/done-recipes');
+      expect(pathname).toBe(pathRecipes);
     });
   });
 
-  test('Test if text `Done Recipes` is rendered', () => {
-    const { history } = renderWithRouter(
+  test('Test if text `Done Recipes` is rendered 1', () => {
+    renderWithRouter(
       <Provider>
         <App />
       </Provider>,
-      ['/done-recipes'],
+      [pathRecipes],
     );
     const doneRecipesText = screen.getByRole('heading', {
       name: /done recipes/i,
@@ -59,13 +61,13 @@ describe('Done Recipes page tests', () => {
     expect(doneRecipesText).toBeInTheDocument();
   });
 
-  test('Test if text `Done Recipes` is rendered', async () => {
+  test('Test if text `Done Recipes` is rendered 2', async () => {
     localStorage.setItem('doneRecipes', JSON.stringify(dataMock));
     const { history } = renderWithRouter(
       <Provider>
         <App />
       </Provider>,
-      ['/done-recipes'],
+      [pathRecipes],
     );
     const title = screen.getByTestId('page-title');
     const allBtn = screen.getByTestId('filter-by-all-btn');
@@ -73,7 +75,7 @@ describe('Done Recipes page tests', () => {
     const drinkBtn = screen.getByTestId('filter-by-drink-btn');
     const image1 = screen.getByTestId('0-horizontal-image');
     const text = screen.getByTestId('0-horizontal-top-text');
-    const name = screen.getByTestId('0-horizontal-name');
+    const name = screen.getByTestId();
     const date = screen.getByTestId('0-horizontal-done-date');
     const shareBtn = screen.getByTestId('0-horizontal-share-btn');
     const tags = screen.getByTestId('0-Pasta-horizontal-tag');
@@ -105,9 +107,9 @@ describe('Done Recipes page tests', () => {
       <Provider>
         <App />
       </Provider>,
-      ['/done-recipes'],
+      [pathRecipes],
     );
-    const name = screen.getByTestId('0-horizontal-name');
+    const name = screen.getByTestId(pathHorizontal);
     expect(name).toBeInTheDocument();
     userEvent.click(name);
 
@@ -123,10 +125,10 @@ describe('Done Recipes page tests', () => {
       <Provider>
         <App />
       </Provider>,
-      ['/done-recipes'],
+      [pathRecipes],
     );
     const drinkBtn = screen.getByTestId('filter-by-drink-btn');
-    const name = screen.getByTestId('0-horizontal-name');
+    const name = screen.getByTestId(pathHorizontal);
 
     expect(drinkBtn).toBeInTheDocument();
     expect(name).toBeInTheDocument();
