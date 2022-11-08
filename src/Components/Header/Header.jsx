@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes, { string } from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import search from '../../images/searchIcon.svg';
 import SearchBar from '../SearchBar';
 import { Context } from '../../Context/Context';

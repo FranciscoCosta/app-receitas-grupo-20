@@ -1,10 +1,13 @@
 .DoneRecipes {
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  backdrop-filter: brightness(60%);
+  background: url(../../images/bg123.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
   min-height: 100vh;
+  overflow: hidden;
   width: 100%;
 }
 

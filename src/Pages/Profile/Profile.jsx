@@ -4,7 +4,10 @@ import './Profile.css';
 import { AiFillHeart } from '@react-icons/all-files/ai/AiFillHeart';
 import { AiFillCheckCircle } from '@react-icons/all-files/ai/AiFillCheckCircle';
 import { AiOutlineLogout } from '@react-icons/all-files/ai/AiOutlineLogout';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { getAuth, signOut } from 'firebase/auth';
 import { Context } from '../../Context/Context';
+import { auth } from '../../utils/firebase';
 
 function Profile({ history }) {
   const [email, setEmail] = useState('email');
@@ -82,6 +85,12 @@ function Profile({ history }) {
             data-testid="profile-logout-btn"
             onClick={ () => {
               deleteUserLocalStorage();
+              const authU = getAuth();
+              signOut(authU).then(() => {
+                history.push('/');
+              }).catch((error) => {
+                console.log(error);
+              });
               history.push('/');
             } }
           />

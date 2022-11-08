@@ -16,6 +16,7 @@
 }
 
 .Footer a {
+  background: rgba(255, 255, 255, 0);
   height: inherit;
   left: auto;
   padding-right: 1vw;
@@ -36,6 +37,7 @@
   width: min-content;
 }
 
-.Footer a {
-  background: rgba(255, 255, 255, 0);
+.container-btn-footer:hover {
+  transform: translateY(-7px);
+  transition: 0.5s;
 }
