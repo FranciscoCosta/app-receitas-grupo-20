@@ -4,19 +4,29 @@ import './Login.css';
 import md5 from 'crypto-js/md5';
 import logo from '../../images/bgT.png';
 import { Context } from '../../Context/Context';
-// npm install md5
+
+// npm install crypto-js
 // npm install aos --save
+// npm install swiper
+// npm install react-simple-star-rating
+
 function Login({ history }) {
-  const { setUserImg } = useContext(Context);
+  const { userImg, setUserImg } = useContext(Context);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setvalid] = useState(false);
-  const fetchGravatar = async () => {
+  const handleClick = async () => {
     const hash = md5(email).toString();
     const urll = `https://www.gravatar.com/avatar/${hash}`;
     const fetchApi = await fetch(urll);
     const { url } = fetchApi;
     setUserImg(url);
+    const user = {
+      email,
+      userImg,
+    };
+    localStorage.setItem('user', JSON.stringify((user)));
+    history.push('/meals');
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -35,14 +45,15 @@ function Login({ history }) {
       setvalid(false);
     }
   };
-  const handleClick = () => {
-    const user = {
-      email,
-    };
-    localStorage.setItem('user', JSON.stringify((user)));
-    fetchGravatar();
-    history.push('/meals');
-  };
+  // const handleClick = () => {
+  //   const user = {
+  //     email,
+  //     userImg,
+  //   };
+  //   localStorage.setItem('user', JSON.stringify((user)));
+  //   fetchGravatar();
+  //   history.push('/meals');
+  // };
   return (
     <div className="Login">
       <div

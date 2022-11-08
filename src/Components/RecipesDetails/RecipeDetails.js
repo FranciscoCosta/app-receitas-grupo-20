@@ -13,6 +13,7 @@ import RecipesCard from './RecipesCard';
 import Instructions from './Instruction';
 import Carousel from './Carousel';
 import { Context } from '../../Context/Context';
+import ShowReview from '../Review/showReview/ShowReview';
 
 function RecipeDetails({ page, notPages, history }) {
   const [recomendation, setrecomendation] = useState([]);
@@ -72,6 +73,7 @@ function RecipeDetails({ page, notPages, history }) {
           <WhatsappIcon size={ 40 } round />
         </WhatsappShareButton>
       </div>
+      <ShowReview />
       <Carousel
         loading={ loading }
         recomendation={ recomendation }

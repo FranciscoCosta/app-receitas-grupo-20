@@ -46,7 +46,7 @@ function Instructions({ ItemIngridients, page, Item }) {
 
       </p>
 
-      {console.log(Item.strYoutube)}
+      {/* {console.log(Item.strYoutube)} */}
       {(page === 'meals') && (
         <div className="container-video">
           <iframe

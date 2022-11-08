@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PropTypes, { string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import search from '../../images/searchIcon.svg';
@@ -8,8 +8,17 @@ import './Header.css';
 import logo from '../../images/bgT.png';
 
 function Header({ title, perfilBool, searchBool, type, img }) {
-  const { userImg } = useContext(Context);
+  const { userImg, setUserImg } = useContext(Context);
   const [inputSearch, setinputSearch] = useState(false);
+  const [userImage, setUserImage] = useState('');
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    const json = JSON.parse(user).userImg;
+    setUserImage(json);
+    setUserImg(json);
+  }, []);
+
   return (
     <section>
       <div className="Header">
@@ -29,7 +38,7 @@ function Header({ title, perfilBool, searchBool, type, img }) {
         { perfilBool && (
           <Link to="/profile">
             <img
-              src={ userImg }
+              src={ userImg || userImage }
               alt="perfil-icon"
               data-testid="profile-top-btn"
               style={ { borderRadius: '10px' } }

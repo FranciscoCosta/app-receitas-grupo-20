@@ -8,7 +8,8 @@ import { Context } from '../../Context/Context';
 
 function Profile({ history }) {
   const [email, setEmail] = useState('email');
-  const { userImg } = useContext(Context);
+  const { userImg, setUserImg } = useContext(Context);
+  const [userImage, setUserImage] = useState('');
 
   const getEmailLocalStorage = () => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -16,6 +17,8 @@ function Profile({ history }) {
       setEmail('user@email.com');
     } else {
       setEmail(user.email);
+      setUserImage(user.userImg);
+      setUserImg(user.userImg);
     }
   };
 
@@ -41,7 +44,7 @@ function Profile({ history }) {
       >
 
         <form className="Profile-form">
-          <img src={ userImg } alt="profile-pic" className="Profile__img" />
+          <img src={ userImg || userImage } alt="profile-pic" className="Profile__img" />
           <h2
             className="profile-email"
             data-testid="profile-email"

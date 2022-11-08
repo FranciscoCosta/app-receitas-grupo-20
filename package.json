@@ -20,6 +20,7 @@
     "react-router-dom": "^5.3.3",
     "react-scripts": "^5.0.1",
     "react-share": "^4.4.1",
+    "react-simple-star-rating": "^5.1.6",
     "swiper": "^6.8.4"
   },
   "scripts": {

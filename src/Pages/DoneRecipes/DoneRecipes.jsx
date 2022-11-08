@@ -9,6 +9,7 @@ import {
 import Header from '../../Components/Header/Header';
 import './DoneRecipes.css';
 import Footer from '../../Components/Footer/Footer';
+import Review from '../../Components/Review/setReview/Review';
 
 function DoneRecipes({ history }) {
   const [done, setDone] = useState([]);
@@ -179,6 +180,9 @@ function DoneRecipes({ history }) {
                         >
                           <WhatsappIcon size={ 40 } round />
                         </WhatsappShareButton>
+                      </div>
+                      <div>
+                        <Review />
                       </div>
                       {
                         recipe.tags.map((tag) => (

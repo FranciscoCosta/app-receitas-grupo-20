@@ -1,6 +1,6 @@
 .Profile {
   align-items: center;
-  background: url(../../images/test.jpg);
+  background: url('../../images/test.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -50,7 +50,8 @@
   width: 100px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .Profile-form {
     border-radius: 1px;
     height: 100vh;
@@ -66,6 +67,7 @@
 
   .profile-email {
     font-size: 0.8rem;
+    background-color: aqua;
   }
 }
 
