@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PropTypes, { string } from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import search from '../../images/searchIcon.svg';
 import SearchBar from '../SearchBar';
 import { Context } from '../../Context/Context';
@@ -10,6 +11,7 @@ import logo from '../../images/bgT.png';
 function Header({ title, perfilBool, searchBool, type, img }) {
   const { userImg } = useContext(Context);
   const [inputSearch, setinputSearch] = useState(false);
+
   return (
     <section>
       <div className="Header">
@@ -30,6 +32,7 @@ function Header({ title, perfilBool, searchBool, type, img }) {
           <Link to="/profile">
             <img
               src={ userImg }
+              className="Profile__img"
               alt="perfil-icon"
               data-testid="profile-top-btn"
               style={ { borderRadius: '10px' } }

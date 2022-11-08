@@ -1,16 +1,40 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
+import { FcGoogle } from '@react-icons/all-files/fc/FcGoogle';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import md5 from 'crypto-js/md5';
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+} from 'firebase/auth';
+
+import { auth } from '../../utils/firebase';
 import logo from '../../images/bgT.png';
 import { Context } from '../../Context/Context';
-// npm install md5
-// npm install aos --save
+
 function Login({ history }) {
   const { setUserImg } = useContext(Context);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setvalid] = useState(false);
+
+  const googleProvider = new GoogleAuthProvider();
+  const GoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log(result.user, 'done');
+      const userEmail = {
+        email,
+      };
+      localStorage.setItem('user', JSON.stringify((userEmail)));
+      setUserImg(result.user.photoURL);
+      history.push('/meals');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const fetchGravatar = async () => {
     const hash = md5(email).toString();
     const urll = `https://www.gravatar.com/avatar/${hash}`;
@@ -88,6 +112,15 @@ function Login({ history }) {
             data-testid="login-submit-btn"
           >
             Enter
+          </button>
+          <button
+            onClick={ GoogleLogin }
+            type="button"
+            className="Login__google-button"
+          >
+            <FcGoogle size={ 20 } className="google-svg" />
+            Sign in using Google
+
           </button>
         </form>
       </div>

@@ -34,13 +34,12 @@ body {
 .meals > .logo {
   animation: shake 1.5s infinite ease;
   color: aliceblue;
-  font-family: Montserrat , sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 3em;
   font-weight: 900;
 }
 
 @keyframes shake {
-
   0% {
     transform: rotate(5deg);
   }
@@ -55,7 +54,6 @@ body {
 }
 
 @keyframes clink {
-
   0% {
     transform: rotate(-10deg);
   }
@@ -67,4 +65,19 @@ body {
   100% {
     transform: rotate(-10deg);
   }
+}
+
+body::-webkit-scrollbar-track {
+  border: 5px solid white;
+  background-color: #2fc18c;
+}
+
+body::-webkit-scrollbar {
+  width: 15px;
+  background-color: #dfe6e9;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #2ee59d;
+  border-radius: 10px;
 }
