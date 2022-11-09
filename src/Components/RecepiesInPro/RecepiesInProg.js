@@ -27,7 +27,7 @@ function RecipesInProg({ page, pages, history }) {
         checkbox.parentNode.classList.add('checado');
       });
     }
-  }, [ItemIngridients]);
+  }, [ItemIngridients, id]);
 
   useEffect(() => {
     fetchItem(page, id);
@@ -43,7 +43,7 @@ function RecipesInProg({ page, pages, history }) {
         JSON.stringify(Object.fromEntries(ObjInProg)),
       );
     }
-  }, [checkeds]);
+  }, [checkeds, ItemIngridients.length, id]);
 
   const handleCheck = ({ target }) => {
     const label = target.parentNode;

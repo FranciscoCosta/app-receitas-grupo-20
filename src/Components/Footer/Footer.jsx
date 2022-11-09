@@ -18,7 +18,7 @@ function Footer({ showMeals, showDrinks }) {
 
   useEffect(() => {
     setShow();
-  }, []);
+  });
   return (
     <footer
       data-testid="footer"

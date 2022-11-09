@@ -24,12 +24,10 @@ function FavoriteRecipes({ history }) {
     setpureData(newFavorites);
     setDone(newFavorites);
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkLoad = () => {
-    console.log('checkload');
-    console.log('done', done);
     if (done !== []) {
       setHaveData(true);
-      console.log('false');
     }
   };
   const getLocalStorage = () => {
@@ -59,11 +57,11 @@ function FavoriteRecipes({ history }) {
   useEffect(() => {
     getLocalStorage();
     checkLoad();
-  }, []);
+  });
 
   useEffect(() => {
     checkLoad();
-  }, [haveData, setpureData]);
+  }, [haveData, setpureData, checkLoad]);
 
   return (
     <div className="FavoriteRecipes">

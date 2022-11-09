@@ -18,7 +18,7 @@ function Header({ title, perfilBool, searchBool, type, img }) {
     const json = JSON.parse(user).userImg;
     setUserImage(json);
     setUserImg(json);
-  }, [userImage, userImg]);
+  }, [userImage, userImg, setUserImg]);
 
   return (
     <section>

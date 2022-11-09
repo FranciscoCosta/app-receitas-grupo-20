@@ -34,7 +34,7 @@ function Profile({ history }) {
 
   useEffect(() => {
     getEmailLocalStorage();
-  }, []);
+  });
   return (
     <div className="Profile">
       <div
