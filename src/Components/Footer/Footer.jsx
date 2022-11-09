@@ -82,7 +82,7 @@ function Footer({ showMeals, showDrinks, history }) {
               className="Profile-icons"
             />
           </Link>
-          <Link>
+          <Link to="/favorite-recipes">
             <AiFillHeart
               size={70}
               color="#2fc18c"
