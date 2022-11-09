@@ -27,7 +27,8 @@
   width: 5rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .Footer {
     display: flex;
     flex-direction: column;
@@ -38,6 +39,7 @@
     top: 90%;
     width: min-content;
   }
+
   .container-btn-footer svg {
     width: 2.5rem;
   }

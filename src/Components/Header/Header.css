@@ -111,10 +111,11 @@ label {
 input:checked {
   background-color: #2ee59d;
   border: 6px solid #2ee59d;
-  outline: unset !important; /* I added this one for Edge (chromium) support */
+  outline: unset ! important; /* I added this one for Edge (chromium) support */
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .search-container svg {
     width: 20px;
   }
@@ -130,6 +131,7 @@ input:checked {
     margin: 0 auto;
     width: max-content;
   }
+
   .SearchBar__form {
     gap: 0.2rem;
     width: 60vw;
@@ -177,6 +179,6 @@ input:checked {
   input:checked {
     background-color: #2ee59d;
     border: 6px solid #2ee59d;
-    outline: unset !important; /* I added this one for Edge (chromium) support */
+    outline: unset ! important; /* I added this one for Edge (chromium) support */
   }
 }

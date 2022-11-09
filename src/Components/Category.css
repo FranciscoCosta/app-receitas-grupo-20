@@ -38,7 +38,8 @@
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .Category {
     align-items: center;
     display: flex;
@@ -51,18 +52,17 @@
 
   .Category-button {
     border-radius: 1px;
-    margin: 0px;
-    padding: 0.5rem;
     font-size: 1rem;
-
     height: max-content;
+    margin: 0;
+    padding: 0.5rem;
     width: 100%;
   }
 
   .menu-mobile {
     display: inline;
-    position: absolute;
     left: 10px;
+    position: absolute;
     top: 10px;
   }
 

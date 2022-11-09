@@ -69,30 +69,31 @@
   height: min-content;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .Meals {
-    min-height: 100vh;
-    overflow-x: hidden;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
   .Drinks {
-    min-height: 100vh;
-    overflow-x: hidden;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
   .Page__cards {
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
     gap: 1rem;
+    justify-content: center;
     padding-top: 0.5rem;
     width: 60%;
   }
