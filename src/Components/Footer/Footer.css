@@ -4,7 +4,7 @@
   gap: 2rem;
   height: 5.5vh;
   margin-left: 2rem;
-  position: fixed;
+  position: sticky;
   top: 50%;
   width: max-content;
 }
@@ -27,8 +27,7 @@
   width: 5rem;
 }
 
-@media screen and ( max-width : 600px ) {
-
+@media screen and (max-width: 600px) {
   .Footer {
     display: flex;
     flex-direction: column;
