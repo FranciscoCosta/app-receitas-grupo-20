@@ -69,17 +69,54 @@
   height: min-content;
 }
 
-@media screen and ( max-width : 600px ) {
+@media screen and (max-width: 600px) {
+  .Meals {
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Drinks {
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Page__cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    width: 60%;
+  }
 
   .Recipe-container-item {
-    height: 15rem;
-    width: 15rem;
+    border-radius: 10px;
+    height: 10rem;
+    width: 10rem;
+  }
+
+  .Recipe-container-item img {
+    border-radius: 10px;
+    height: 100%;
   }
 
   .Item__card-name {
-    font-size: 1.7rem;
-    line-height: 2.2rem;
-    padding: 5px 20px;
-    top: -5px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    height: min-content;
+    line-height: -5px;
+    padding: 2px 4px;
+    text-shadow: 1px 8px 15px rgba(0, 0, 0, 0.1);
+    top: -10px;
+    width: 70%;
   }
 }

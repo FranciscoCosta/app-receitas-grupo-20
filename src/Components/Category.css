@@ -38,29 +38,38 @@
   display: none;
 }
 
-@media screen and ( max-width : 600px ) {
-
+@media screen and (max-width: 600px) {
   .Category {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: 0;
     justify-content: center;
-    margin: 2rem auto;
+    margin: 0;
     width: 100%;
   }
 
   .Category-button {
     border-radius: 1px;
-    margin: 1px;
-    padding: 1px;
+    margin: 0px;
+    padding: 0.5rem;
+    font-size: 1rem;
+
+    height: max-content;
     width: 100%;
   }
 
   .menu-mobile {
     display: inline;
     position: absolute;
-    right: 20px;
-    top: 20px;
+    left: 10px;
+    top: 10px;
+  }
+
+  .Category-button:hover {
+    background-color: #2ee59d;
+    box-shadow: 1px 15px 20px rgba(255, 255, 255, 0.4);
+    color: white;
+    transform: none;
   }
 }

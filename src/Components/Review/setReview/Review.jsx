@@ -80,12 +80,14 @@ export default function Review({ id }) {
               </div>
             </div>
           )
-          : <h4
+          : (
+            <h4
               className="Review__rate-comment"
-          >
-            Thank you for your opinion
+            >
+              Thank you for your opinion!
 
             </h4>
+          )
       }
     </div>
   );

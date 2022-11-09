@@ -44,6 +44,13 @@
   width: 100px;
 }
 
+.Review__rate-btn:hover {
+  background-color: #2ee59d;
+  box-shadow: 1px 15px 20px rgba(255, 255, 255, 0.4);
+  color: white;
+  transform: translateY(-3px);
+}
+
 .Review__rate-comment {
   font-size: 1.5rem;
 }
