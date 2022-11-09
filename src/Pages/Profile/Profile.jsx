@@ -61,7 +61,6 @@ function Profile({ history }) {
             Done Recipes
           </h3>
           <AiFillCheckCircle
-
             size={ 70 }
             color="green "
             data-testid="profile-done-btn"

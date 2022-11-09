@@ -12,14 +12,13 @@
   padding: 0;
   width: 40%;
 }
-.Recipe__InProgress-title {
-  text-align: center;
-}
+
 .Item-container-img {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
 }
+
 .item-img {
   width: 50%;
 }
@@ -27,6 +26,7 @@
 .Recipe__InProgress-title {
   font-size: 4rem;
   font-weight: 700;
+  text-align: center;
 }
 
 .checado {
@@ -59,9 +59,11 @@
   transition: all 0.3s ease 0s;
   width: 160px;
 }
+
 .social-btn {
   margin-top: 1rem;
 }
+
 .Finish-btn:hover {
   background-color: #2ee59d;
   box-shadow: 1px 15px 20px rgba(255, 255, 255, 0.4);
@@ -69,11 +71,13 @@
   transform: translateY(-7px);
 }
 
-@media screen and (max-width: 900px) {
+@media screen and ( max-width : 900px ) {
+
   .InProgress {
-    width: 100%;
     overflow-x: hidden;
+    width: 100%;
   }
+
   .Recipe-item-category {
     font-size: 2rem;
   }

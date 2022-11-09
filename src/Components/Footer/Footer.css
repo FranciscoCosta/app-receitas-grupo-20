@@ -27,16 +27,17 @@
   width: 5rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .Footer {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     height: 5.5vh;
+    left: 0%;
     margin-left: 2rem;
     position: fixed;
     top: 50%;
-    left: 0%;
     width: min-content;
   }
 

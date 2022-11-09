@@ -1,7 +1,6 @@
 .FavoriteRecipes {
   backdrop-filter: blur(10px);
-  backdrop-filter: brightness(60%);
-  background: url(../../images/bg123.png);
+  background: url('../../images/bg123.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -70,6 +69,11 @@
   width: 160px;
 }
 
+.social-btn button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
 .FavoriteRecipes__filter button:hover {
   background-color: #2ee59d;
   box-shadow: 1px 15px 20px rgba(255, 255, 255, 0.4);
@@ -103,24 +107,21 @@
   margin-bottom: 2rem;
 }
 
-.social-btn button {
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-}
+@media screen and ( max-width : 600px ) {
 
-@media screen and (max-width: 600px) {
   .FavoriteRecipes__container {
-    width: 100%;
     overflow-x: hidden;
+    width: 100%;
   }
+
   .FavoriteRecipes__filter {
-    padding-top: 1rem;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 0;
     justify-content: center;
     margin: 0;
+    padding-top: 1rem;
   }
 
   .FavoriteRecipes__filter button {

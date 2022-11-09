@@ -1,6 +1,6 @@
 .Login {
   align-items: center;
-  background: url(../../images/bgtest.jpg);
+  background: url('../../images/bgtest.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -6,9 +6,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
-  padding: 1rem;
   margin-bottom: 2rem;
+  padding: 1rem;
+  width: 90%;
 }
 
 .showReview p {

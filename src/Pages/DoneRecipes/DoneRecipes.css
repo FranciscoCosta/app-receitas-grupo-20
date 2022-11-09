@@ -1,7 +1,6 @@
 .DoneRecipes {
   backdrop-filter: blur(10px);
-  backdrop-filter: brightness(60%);
-  background: url(../../images/bg123.png);
+  background: url('../../images/bg123.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -102,15 +101,16 @@
   margin: 1.5rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .DoneRecipes__filter {
-    padding-top: 1rem;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 0;
     justify-content: center;
     margin: 0;
+    padding-top: 1rem;
   }
 
   .DoneRecipes__filter button {
