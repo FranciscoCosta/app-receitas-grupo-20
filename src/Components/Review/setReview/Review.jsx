@@ -115,7 +115,7 @@ export default function Review({ id }) {
                 type="button"
                 onClick={ enableEditReview }
               >
-                Edit review
+                Add a new review
               </button>
             </div>
           )

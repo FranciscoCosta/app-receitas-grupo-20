@@ -3,21 +3,16 @@ import { useEffect, useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 
 function Instructions({ ItemIngridients, page, Item }) {
-  const [showVid, setShowVid] = useState(false);
-  // const handleYoutube = () => {
-  //   if (page === 'meals' && Item.strYoutube !== undefined) {
-  //     Item.strYoutube = Item.strYoutube.replace('watch?v=', 'embed/');
-  //     setShowVid(true);
-  //   }
-  // };
+  const [showVid, setShowVid] = useState(true);
+  const [linkYtb, setLink] = useState('');
 
   useEffect(() => {
     if (page === 'meals' && Item.strYoutube !== undefined) {
       Item.strYoutube = Item.strYoutube.replace('watch?v=', 'embed/');
-      setShowVid(true);
+      setShowVid(false);
+      setLink(Item.strYoutube);
     }
-    // handleYoutube();
-  }, [Item]);
+  }, [Item, page]);
 
   return (
     <section className="Instruction">
@@ -53,13 +48,12 @@ function Instructions({ ItemIngridients, page, Item }) {
 
       </p>
       {
-        showVid
+        !showVid
           ? (
             (page === 'meals') && (
               <div className="container-video">
                 <iframe
-                  src={ Item.strYoutube }
-                  frameBorder="0"
+                  src={ linkYtb }
                   allow="autoplay; encrypted-media"
                   title="video"
                   data-testid="video"

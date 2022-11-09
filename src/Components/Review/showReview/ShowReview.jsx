@@ -14,7 +14,7 @@ export default function ShowReview({ id }) {
     if (json.find((i) => i.id === id)) {
       setHasReview(true);
     }
-  }, []);
+  }, [id]);
 
   return (
     <div>

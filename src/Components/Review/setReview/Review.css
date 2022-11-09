@@ -55,11 +55,13 @@
   font-size: 1.5rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .Review__rate-card {
     margin: 0 auto;
     width: 90%;
   }
+
   .Review__rate-textarea {
     width: 80%;
   }

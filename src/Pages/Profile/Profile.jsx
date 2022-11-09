@@ -22,12 +22,14 @@ function Profile({ history }) {
       setEmail(user.email);
       setUserImage(user.userImg);
       setUserImg(user.userImg);
-      // console.log(userImg, userImage);
     }
   };
 
   const deleteUserLocalStorage = () => {
-    localStorage.clear();
+    // localStorage.clear();
+    localStorage.removeItem('user');
+    localStorage.removeItem('inProgressRecipes');
+    localStorage.removeItem('doneRecipes');
   };
 
   useEffect(() => {
