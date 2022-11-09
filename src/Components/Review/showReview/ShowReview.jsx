@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import './ShowReview.css';
 
 export default function ShowReview({ id }) {
   const [review, setReview] = useState('');
