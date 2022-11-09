@@ -208,7 +208,7 @@ function FavoriteRecipes({ history }) {
             </form>
           )
       }
-      <Footer showMeals showDrinks />
+      <Footer showMeals />
 
     </div>
   );

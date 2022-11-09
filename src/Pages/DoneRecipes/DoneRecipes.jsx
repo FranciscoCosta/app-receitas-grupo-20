@@ -202,7 +202,7 @@ function DoneRecipes({ history }) {
             </form>
           )
       }
-      <Footer showMeals showDrinks />
+      <Footer showDrinks />
     </div>
   );
 }

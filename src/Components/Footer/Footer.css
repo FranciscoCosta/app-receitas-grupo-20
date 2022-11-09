@@ -1,12 +1,15 @@
 .Footer {
+  background-color: beige;
+  border: 2px rgba(0, 0, 0, 0.3) solid;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  height: 5.5vh;
-  margin-left: 2rem;
-  position: sticky;
-  top: 50%;
-  width: max-content;
+  margin-left: 1rem;
+  padding: 0.5rem 0;
+  left: 0%;
+  position: fixed;
+  top: 30%;
+  width: min-content;
 }
 
 .mealsLink {
@@ -18,29 +21,32 @@
   width: min-content;
 }
 
-.container-btn-footer:hover {
-  transform: translateY(-7px);
-  transition: 0.5s;
-}
-
 .container-btn-footer svg {
   width: 5rem;
+  margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 600px) {
   .Footer {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    height: 5.5vh;
+    gap: 0rem;
+    height: min-content;
+    margin-left: 5px;
     left: 0%;
-    margin-left: 2rem;
     position: fixed;
-    top: 50%;
+    top: 35%;
     width: min-content;
+    z-index: 0;
   }
 
   .container-btn-footer svg {
-    width: 2.5rem;
+    width: 1.5rem;
+    margin: 0rem;
+    padding: 0;
+  }
+  .footer-icon-h {
+    padding: 0;
+    margin: 0;
   }
 }
