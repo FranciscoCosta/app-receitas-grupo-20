@@ -107,3 +107,37 @@
   background-color: rgba(255, 255, 255, 0);
   border: none;
 }
+
+@media screen and (max-width: 600px) {
+  .FavoriteRecipes__container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .FavoriteRecipes__filter {
+    padding-top: 1rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .FavoriteRecipes__filter button {
+    border-radius: 1px;
+    margin: 0;
+    width: 100vw;
+  }
+
+  .FavoriteRecipes__filter button:hover {
+    transform: none;
+  }
+
+  .FavoriteRecipes__item-card {
+    border-radius: 25px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.55);
+    margin: 1rem;
+    padding-bottom: 1rem;
+    width: 90%;
+  }
+}

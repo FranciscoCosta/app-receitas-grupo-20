@@ -10,7 +10,7 @@
 }
 
 .mealsLink {
-  background-color: whitesmoke;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .container-btn-footer {
@@ -27,8 +27,7 @@
   width: 5rem;
 }
 
-@media screen and ( max-width : 600px ) {
-
+@media screen and (max-width: 600px) {
   .Footer {
     display: flex;
     flex-direction: column;
@@ -36,7 +35,8 @@
     height: 5.5vh;
     margin-left: 2rem;
     position: fixed;
-    top: 90%;
+    top: 50%;
+    left: 0%;
     width: min-content;
   }
 

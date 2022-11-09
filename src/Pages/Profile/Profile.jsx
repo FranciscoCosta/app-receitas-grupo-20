@@ -60,9 +60,10 @@ function Profile({ history }) {
           <h3>
             Done Recipes
           </h3>
-          <AiFillHeart
+          <AiFillCheckCircle
+
             size={ 70 }
-            color="crimson "
+            color="green "
             data-testid="profile-done-btn"
             className="Profile-icons"
             onClick={ () => history.push('/done-recipes') }
@@ -70,9 +71,9 @@ function Profile({ history }) {
           <h3>
             Favorite Recipes
           </h3>
-          <AiFillCheckCircle
+          <AiFillHeart
             size={ 70 }
-            color="green "
+            color="crimson "
             data-testid="profile-favorite-btn"
             className="Profile-icons"
             onClick={ () => history.push('/favorite-recipes') }
@@ -82,7 +83,7 @@ function Profile({ history }) {
           </h3>
           <AiOutlineLogout
             size={ 70 }
-            color="crimson "
+            color="red "
             type="button"
             className="Profile-icons"
             data-testid="profile-logout-btn"

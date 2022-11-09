@@ -112,10 +112,11 @@ export default function Review({ id }) {
 
               </h4>
               <button
+                className="Review__rate-btn"
                 type="button"
                 onClick={ enableEditReview }
               >
-                Add a new review
+                New review
               </button>
             </div>
           )

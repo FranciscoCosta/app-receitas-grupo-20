@@ -7,9 +7,21 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 0 auto;
   padding: 0;
   width: 40%;
+}
+.Recipe__InProgress-title {
+  text-align: center;
+}
+.Item-container-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-img {
+  width: 50%;
 }
 
 .Recipe__InProgress-title {
@@ -27,7 +39,7 @@
   flex-direction: column;
   gap: 2rem;
   justify-content: center;
-  margin: 14rem 0 2rem;
+  margin: 0 2rem;
 }
 
 .Finish-btn {
@@ -47,10 +59,22 @@
   transition: all 0.3s ease 0s;
   width: 160px;
 }
-
+.social-btn {
+  margin-top: 1rem;
+}
 .Finish-btn:hover {
   background-color: #2ee59d;
   box-shadow: 1px 15px 20px rgba(255, 255, 255, 0.4);
   color: white;
   transform: translateY(-7px);
+}
+
+@media screen and (max-width: 900px) {
+  .InProgress {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .Recipe-item-category {
+    font-size: 2rem;
+  }
 }

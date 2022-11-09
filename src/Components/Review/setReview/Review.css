@@ -11,6 +11,7 @@
   min-height: 22rem;
   transition: 0.7s all ease;
   width: max-content;
+  margin-bottom: 2rem;
 }
 
 .Review__rate-title {
@@ -41,7 +42,8 @@
   outline: none;
   text-transform: uppercase;
   transition: all 0.3s ease 0s;
-  width: 100px;
+  padding: 4px 10px;
+  width: max-content;
 }
 
 .Review__rate-btn:hover {
@@ -55,8 +57,7 @@
   font-size: 1.5rem;
 }
 
-@media screen and ( max-width : 600px ) {
-
+@media screen and (max-width: 600px) {
   .Review__rate-card {
     margin: 0 auto;
     width: 90%;

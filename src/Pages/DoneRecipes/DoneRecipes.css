@@ -102,9 +102,9 @@
   margin: 1.5rem;
 }
 
-@media screen and ( max-width : 600px ) {
-
+@media screen and (max-width: 600px) {
   .DoneRecipes__filter {
+    padding-top: 1rem;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -124,9 +124,10 @@
   }
 
   .DoneRecipes__item-card {
-    border-radius: 1px;
+    border-radius: 25px;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.55);
-    margin-bottom: 2rem;
-    width: 100vw;
+    margin: 1rem;
+    padding-bottom: 1rem;
+    width: 90%;
   }
 }

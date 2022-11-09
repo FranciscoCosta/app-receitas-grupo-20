@@ -8,7 +8,7 @@ import './Category.css';
 function Category({ page }) {
   const [categorias, setCategorias] = useState([]);
   const [lastCategory, setLastCategory] = useState('');
-  const [showing, setshowing] = useState(true);
+  const [showing, setshowing] = useState(false);
   const [menu, setmenu] = useState(true);
 
   const { handleCallApi, setCategorySearch } = useContext(Context);
@@ -55,7 +55,7 @@ function Category({ page }) {
 
   return (
     <div className="Category">
-      {menu ? <GiHamburgerMenu
+      {!menu ? <GiHamburgerMenu
         size={ 20 }
         color="#2fc18c"
         className="menu-mobile"

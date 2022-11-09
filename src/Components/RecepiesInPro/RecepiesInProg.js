@@ -85,7 +85,7 @@ function RecipesInProg({ page, pages, history }) {
   return (
     <div className="InProgress">
       <h1 className="Recipe__InProgress-title">Recipe In Progress</h1>
-      <RecipesCard Item={ Item } pages={ pages } page={ page } />
+      <RecipesCard Item={ Item } pages={ pages } page={ page } className="card-test" />
       <section
         className="InProgress__instructions"
         data-testid="instructions"
