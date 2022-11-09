@@ -9,27 +9,8 @@
   width: max-content;
 }
 
-.Footer img {
-  height: 5vh;
-  padding-top: 0.4vh;
-  width: auto;
-}
-
-.Footer a {
-  background: rgba(255, 255, 255, 0);
-  height: inherit;
-  left: auto;
-  padding-right: 1vw;
-  width: auto;
-}
-
 .mealsLink {
   background-color: whitesmoke;
-  margin: auto;
-}
-
-.footer-icon-h {
-  transform: translateY(-7px);
 }
 
 .container-btn-footer {
@@ -40,4 +21,26 @@
 .container-btn-footer:hover {
   transform: translateY(-7px);
   transition: 0.5s;
+}
+
+.container-btn-footer svg {
+  width: 5rem;
+}
+
+@media screen and ( max-width : 600px ) {
+
+  .Footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 5.5vh;
+    margin-left: 2rem;
+    position: fixed;
+    top: 90%;
+    width: min-content;
+  }
+
+  .container-btn-footer svg {
+    width: 2.5rem;
+  }
 }

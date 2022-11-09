@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes, { string } from 'prop-types';
+import { BsSearch } from '@react-icons/all-files/bs/BsSearch';
 import { Link } from 'react-router-dom';
 
-import search from '../../images/searchIcon.svg';
 import SearchBar from '../SearchBar';
 import { Context } from '../../Context/Context';
 import './Header.css';
@@ -54,7 +54,10 @@ function Header({ title, perfilBool, searchBool, type, img }) {
                 type="button"
                 onClick={ () => { setinputSearch(!inputSearch); } }
               >
-                <img src={ search } alt="search-icon" data-testid="search-top-btn" />
+                <BsSearch
+                  size={ 40 }
+                  data-testid="search-top-btn"
+                />
               </button>
 
             </div>

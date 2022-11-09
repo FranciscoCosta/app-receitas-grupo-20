@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
+import './Review.css';
 
 export default function Review({ id }) {
   const [rating, setRating] = useState(0);
@@ -59,9 +60,14 @@ export default function Review({ id }) {
       {
         showRate
           ? (
-            <div>
+            <div className="Review__rate-card">
               <div>
-                Rate this recipe
+                <h1
+                  className="Review__rate-title"
+                >
+                  Rate this recipe
+
+                </h1>
                 <div className="starReview">
                   <Rating
                     onClick={ handleRating }
@@ -73,6 +79,7 @@ export default function Review({ id }) {
                   htmlFor="rateInputText"
                 >
                   <textarea
+                    className="Review__rate-textarea"
                     id="rateInputText"
                     type="text"
                     maxLength="200"
@@ -86,6 +93,7 @@ export default function Review({ id }) {
               </div>
               <div>
                 <button
+                  className="Review__rate-btn"
                   type="button"
                   disabled={ isBtnDisabled }
                   onClick={ setReviewToLocalStorage }
@@ -97,7 +105,12 @@ export default function Review({ id }) {
           )
           : (
             <div>
-              <p>Thanks</p>
+              <h4
+                className="Review__rate-comment"
+              >
+                Thank you for your opinion!
+
+              </h4>
               <button
                 type="button"
                 onClick={ enableEditReview }

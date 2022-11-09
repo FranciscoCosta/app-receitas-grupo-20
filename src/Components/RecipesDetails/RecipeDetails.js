@@ -73,7 +73,7 @@ function RecipeDetails({ page, notPages, history }) {
           <WhatsappIcon size={ 40 } round />
         </WhatsappShareButton>
       </div>
-      <h1>Review</h1>
+      <h1>Review(s):</h1>
       <ShowReview id={ id } />
       <Carousel
         loading={ loading }

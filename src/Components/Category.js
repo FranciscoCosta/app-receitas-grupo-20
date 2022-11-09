@@ -1,17 +1,20 @@
 import { useEffect, useState, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { GiHamburgerMenu } from '@react-icons/all-files/gi/GiHamburgerMenu';
+import { AiOutlineCloseSquare } from '@react-icons/all-files/ai/AiOutlineCloseSquare';
 import { Context } from '../Context/Context';
 import './Category.css';
 
 function Category({ page }) {
   const [categorias, setCategorias] = useState([]);
   const [lastCategory, setLastCategory] = useState('');
-  const [showing, setshowing] = useState(false);
+  const [showing, setshowing] = useState(true);
+  const [menu, setmenu] = useState(true);
 
   const { handleCallApi, setCategorySearch } = useContext(Context);
   const handleToggle = () => {
     setshowing(!showing);
+    setmenu(!menu);
   };
 
   const apis = useMemo(() => ({
@@ -52,11 +55,17 @@ function Category({ page }) {
 
   return (
     <div className="Category">
-      <GiHamburgerMenu
-        size={ 50 }
+      {menu ? <GiHamburgerMenu
+        size={ 20 }
+        color="#2fc18c"
         className="menu-mobile"
         onClick={ handleToggle }
-      />
+      /> : <AiOutlineCloseSquare
+        size={ 20 }
+        color="#2fc18c"
+        className="menu-mobile"
+        onClick={ handleToggle }
+      />}
 
       <button
         type="button"

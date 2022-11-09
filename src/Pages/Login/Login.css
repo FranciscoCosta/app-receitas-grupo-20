@@ -75,8 +75,7 @@
   margin-bottom: 10rem;
 }
 
-.Login__input-email,
-.Login__input-password {
+.Login__input-email, .Login__input-password {
   background-color: white;
   border: none;
   border-radius: 12px;
@@ -95,26 +94,25 @@
   margin-bottom: 2rem;
 }
 
-.Login__input-email:focus,
-.Login__input-password:focus {
+.Login__input-email:focus, .Login__input-password:focus {
   border: 1px solid #2ee59d;
   outline: 1px solid #2ee59d;
 }
 
 .Login__google-button {
-  display: flex;
   align-items: center;
-  justify-content: center;
   align-self: center;
   background-color: #323232;
   border: none;
   border-radius: 10px;
   box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   color: white;
+  cursor: pointer;
+  display: flex;
   font-size: 0.8rem;
   font-weight: 700;
   height: 60px;
+  justify-content: center;
   letter-spacing: 1.5px;
   margin-top: 1rem;
   outline: none;
@@ -127,7 +125,8 @@
   margin-right: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and ( max-width : 600px ) {
+
   .Login__container {
     border-radius: 1px;
     height: 100vh;
@@ -137,13 +136,13 @@
     width: 100vw;
   }
 
-  .Login__input-email,
-  .Login__input-password {
+  .Login__input-email, .Login__input-password {
     width: 16rem;
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 770px) {
+@media screen and ( min-width : 600px ) and ( max-width : 770px ) {
+
   .Login__container {
     margin: auto;
   }

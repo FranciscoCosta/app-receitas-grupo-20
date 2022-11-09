@@ -101,3 +101,32 @@
   line-height: 1rem;
   margin: 1.5rem;
 }
+
+@media screen and ( max-width : 600px ) {
+
+  .DoneRecipes__filter {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .DoneRecipes__filter button {
+    border-radius: 1px;
+    margin: 0;
+    width: 100vw;
+  }
+
+  .DoneRecipes__filter button:hover {
+    transform: none;
+  }
+
+  .DoneRecipes__item-card {
+    border-radius: 1px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.55);
+    margin-bottom: 2rem;
+    width: 100vw;
+  }
+}
