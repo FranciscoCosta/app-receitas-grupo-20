@@ -16,7 +16,6 @@ function DoneRecipes({ history }) {
   const [pureData, setpureData] = useState([]);
   const [haveData, setHaveData] = useState(false);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkLoad = () => {
     if (done !== []) {
       setHaveData(true);
@@ -50,11 +49,11 @@ function DoneRecipes({ history }) {
   useEffect(() => {
     getLocalStorage();
     checkLoad();
-  });
+  }, []);
 
   useEffect(() => {
     checkLoad();
-  }, [haveData, checkLoad]);
+  }, [haveData]);
   return (
     <div className="DoneRecipes">
       <Header title="Done Recipes" perfilBool img />
