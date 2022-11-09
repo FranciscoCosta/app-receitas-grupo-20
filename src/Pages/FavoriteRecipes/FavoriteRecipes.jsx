@@ -172,7 +172,7 @@ function FavoriteRecipes({ history }) {
                       </label>
                       <div className="social-btn">
                         <FacebookShareButton
-                          url={ `http://localhost:3000/${recipe.type}s/${recipe.id}` }
+                          url={ `https://t-recipe.netlify.app/${recipe.type}s/${recipe.id}` }
                           quote="One of my favorite recipes ...."
                           hashtag="#Recipes..."
                         >
@@ -180,7 +180,7 @@ function FavoriteRecipes({ history }) {
                         </FacebookShareButton>
 
                         <WhatsappShareButton
-                          url={ `http://localhost:3000/${recipe.type}s/${recipe.id}` }
+                          url={ `https://t-recipe.netlify.app/${recipe.type}s/${recipe.id}` }
                           quote="One of my favorite recipes ...."
                           hashtag="#Recipes..."
                         >

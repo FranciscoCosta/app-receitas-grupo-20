@@ -58,7 +58,7 @@ function RecipeDetails({ page, notPages, history }) {
 
       <div className="social-btn">
         <FacebookShareButton
-          url={ `http://localhost:3000/${page}/${id}` }
+          url={ `https://t-recipe.netlify.app/${page}/${id}` }
           quote="One of my favorite recipes ...."
           hashtag="#Recipes..."
         >
@@ -66,7 +66,7 @@ function RecipeDetails({ page, notPages, history }) {
         </FacebookShareButton>
 
         <WhatsappShareButton
-          url={ `http://localhost:3000/${page}/${id}` }
+          url={ `https://t-recipe.netlify.app/${page}/${id}` }
           quote="One of my favorite recipes ...."
           hashtag="#Recipes..."
         >

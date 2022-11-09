@@ -109,7 +109,7 @@ function RecipesInProg({ page, pages, history }) {
       </section>
       <div className="social-btn">
         <FacebookShareButton
-          url={ `http://localhost:3000/${page}/${id}` }
+          url={ `https://t-recipe.netlify.app/${page}/${id}` }
           quote="One of my favorite recipes ...."
           hashtag="#Recipes..."
         >
@@ -117,7 +117,7 @@ function RecipesInProg({ page, pages, history }) {
         </FacebookShareButton>
 
         <WhatsappShareButton
-          url={ `http://localhost:3000/${page}/${id}` }
+          url={ `https://t-recipe.netlify.app/${page}/${id}` }
           quote="One of my favorite recipes ...."
           hashtag="#Recipes..."
         >
