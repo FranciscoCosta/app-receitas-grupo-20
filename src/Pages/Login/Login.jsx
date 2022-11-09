@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
 import { FcGoogle } from '@react-icons/all-files/fc/FcGoogle';
-import { useAuthState } from 'react-firebase-hooks/auth';
+// import { useAuthState } from 'react-firebase-hooks/auth';
 import md5 from 'crypto-js/md5';
 import {
   signInWithPopup,
@@ -29,10 +29,11 @@ function Login({ history }) {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       console.log(result.user, 'done');
-      const userEmail = {
-        email,
+      const user = {
+        email: result.user.email,
+        userImg: result.user.photoURL,
       };
-      localStorage.setItem('user', JSON.stringify((userEmail)));
+      localStorage.setItem('user', JSON.stringify((user)));
       setUserImg(result.user.photoURL);
       history.push('/meals');
     } catch (error) {
@@ -40,7 +41,7 @@ function Login({ history }) {
     }
   };
 
-  const fetchGravatar = async () => {
+  const handleClick = async () => {
     const hash = md5(email).toString();
     const urll = `https://www.gravatar.com/avatar/${hash}`;
     const fetchApi = await fetch(urll);

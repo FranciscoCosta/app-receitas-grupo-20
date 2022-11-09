@@ -16,9 +16,11 @@ function Header({ title, perfilBool, searchBool, type, img }) {
   useEffect(() => {
     const user = localStorage.getItem('user');
     const json = JSON.parse(user).userImg;
+    console.log(user);
+    console.log(json);
     setUserImage(json);
     setUserImg(json);
-  }, []);
+  }, [userImage, userImg]);
 
   return (
     <section>

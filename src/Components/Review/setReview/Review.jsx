@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
-export default function Review() {
+export default function Review({ id }) {
   const [rating, setRating] = useState(0);
   const [rateText, setRateText] = useState('');
   const [showRate, setShowRate] = useState(true);
 
   const setReviewToLocalStorage = () => {
-    const review = [{
+    const getEmail = JSON.parse(localStorage.getItem('user'));
+    const { email } = getEmail;
+    const review = {
+      id,
       rate: rating,
       text: rateText,
-    }];
-    localStorage.setItem('review', JSON.stringify(review));
+      email,
+    };
+    const get = localStorage.getItem('review');
+    const parse = JSON.parse(get) || [];
+    console.log(parse);
+    localStorage.setItem('review', JSON.stringify([...parse, review]));
     console.log(rating, rateText);
     setShowRate(false);
   };
@@ -39,7 +46,6 @@ export default function Review() {
                   />
                 </div>
               </div>
-              { rating }
               <div>
                 <label
                   htmlFor="rateInputText"

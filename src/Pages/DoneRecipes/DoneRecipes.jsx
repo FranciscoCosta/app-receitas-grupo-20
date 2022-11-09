@@ -182,7 +182,7 @@ function DoneRecipes({ history }) {
                         </WhatsappShareButton>
                       </div>
                       <div>
-                        <Review />
+                        <Review id={ recipe.id } />
                       </div>
                       {
                         recipe.tags.map((tag) => (
