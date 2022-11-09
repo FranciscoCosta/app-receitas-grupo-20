@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import PropTypes from 'prop-types';
 
 export default function Review({ id }) {
   const [rating, setRating] = useState(0);
   const [rateText, setRateText] = useState('');
   const [showRate, setShowRate] = useState(true);
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
 
   const setReviewToLocalStorage = () => {
     const getEmail = JSON.parse(localStorage.getItem('user'));
@@ -17,20 +19,40 @@ export default function Review({ id }) {
     };
     const get = localStorage.getItem('review');
     const parse = JSON.parse(get) || [];
-    console.log(parse);
     localStorage.setItem('review', JSON.stringify([...parse, review]));
     console.log(rating, rateText);
     setShowRate(false);
+    console.log(parse);
   };
 
   const handleRateText = ({ target }) => {
+    const MINIMAL_LENGTH = 3;
     const { value } = target;
     setRateText(value);
+    if (value.length > MINIMAL_LENGTH && rating > 0) {
+      setIsBtnDisabled(false);
+    }
   };
 
   const handleRating = (number) => {
+    const MINIMAL_LENGTH = 3;
     setRating(number);
+    if (number > 0 && rateText.length > MINIMAL_LENGTH) {
+      setIsBtnDisabled(false);
+    }
   };
+  const enableEditReview = () => {
+    setShowRate(true);
+  };
+  useEffect(() => {
+    const get = localStorage.getItem('review');
+    const parse = JSON.parse(get) || [];
+    console.log('aa', parse, 'id', id);
+    if (parse.find((i) => i.id === id)) {
+      setShowRate(false);
+      console.log('igual');
+    }
+  }, [id]);
 
   return (
     <div>
@@ -65,6 +87,7 @@ export default function Review({ id }) {
               <div>
                 <button
                   type="button"
+                  disabled={ isBtnDisabled }
                   onClick={ setReviewToLocalStorage }
                 >
                   Send
@@ -72,8 +95,22 @@ export default function Review({ id }) {
               </div>
             </div>
           )
-          : <p>Thanks</p>
+          : (
+            <div>
+              <p>Thanks</p>
+              <button
+                type="button"
+                onClick={ enableEditReview }
+              >
+                Edit review
+              </button>
+            </div>
+          )
       }
     </div>
   );
 }
+
+Review.propTypes = {
+  id: PropTypes.string,
+}.isRequired;

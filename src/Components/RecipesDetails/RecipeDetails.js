@@ -93,7 +93,6 @@ function RecipeDetails({ page, notPages, history }) {
     </div>
   );
 }
-// Problemas testes Requisito 23 Grupo 20 A Sala A
 RecipeDetails.propTypes = {
   page: PropTypes.string,
 }.isRequired;

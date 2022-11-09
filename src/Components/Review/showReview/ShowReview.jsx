@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import PropTypes from 'prop-types';
 
 export default function ShowReview({ id }) {
   const [review, setReview] = useState('');
@@ -9,9 +10,6 @@ export default function ShowReview({ id }) {
     const getReview = localStorage.getItem('review');
     const json = JSON.parse(getReview) || [];
     setReview(json);
-    console.log(json);
-    console.log(id);
-
     if (json.find((i) => i.id === id)) {
       setHasReview(true);
     }
@@ -25,13 +23,17 @@ export default function ShowReview({ id }) {
 
             <div className="showReview" key={ `${obj}${i}` }>
               <h2>User:</h2>
-              <p>{obj.email}</p>
+              <p>{ obj.email }</p>
               <Rating readonly initialValue={ obj.rate } />
               <h2>Comment:</h2>
               <p>{ obj.text }</p>
             </div>
           ))
-        : <h3>Has no review</h3> }
+        : <h3>Has no review for this recipe</h3> }
     </div>
   );
 }
+
+ShowReview.propTypes = {
+  id: PropTypes.string,
+}.isRequired;

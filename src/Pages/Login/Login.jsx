@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
 import { FcGoogle } from '@react-icons/all-files/fc/FcGoogle';
-// import { useAuthState } from 'react-firebase-hooks/auth';
 import md5 from 'crypto-js/md5';
 import {
   signInWithPopup,
@@ -13,13 +12,8 @@ import { auth } from '../../utils/firebase';
 import logo from '../../images/bgT.png';
 import { Context } from '../../Context/Context';
 
-// npm install crypto-js
-// npm install aos --save
-// npm install swiper
-// npm install react-simple-star-rating
-
 function Login({ history }) {
-  const { userImg, setUserImg } = useContext(Context);
+  const { setUserImg } = useContext(Context);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [valid, setvalid] = useState(false);
@@ -49,7 +43,7 @@ function Login({ history }) {
     setUserImg(url);
     const user = {
       email,
-      userImg,
+      userImg: url,
     };
     localStorage.setItem('user', JSON.stringify((user)));
     history.push('/meals');
@@ -71,15 +65,7 @@ function Login({ history }) {
       setvalid(false);
     }
   };
-  // const handleClick = () => {
-  //   const user = {
-  //     email,
-  //     userImg,
-  //   };
-  //   localStorage.setItem('user', JSON.stringify((user)));
-  //   fetchGravatar();
-  //   history.push('/meals');
-  // };
+
   return (
     <div className="Login">
       <div
@@ -133,7 +119,6 @@ function Login({ history }) {
           >
             <FcGoogle size={ 20 } className="google-svg" />
             Sign in using Google
-
           </button>
         </form>
       </div>

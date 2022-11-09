@@ -16,8 +16,6 @@ function Header({ title, perfilBool, searchBool, type, img }) {
   useEffect(() => {
     const user = localStorage.getItem('user');
     const json = JSON.parse(user).userImg;
-    console.log(user);
-    console.log(json);
     setUserImage(json);
     setUserImg(json);
   }, [userImage, userImg]);
@@ -68,15 +66,15 @@ function Header({ title, perfilBool, searchBool, type, img }) {
 Header.defaultProps = {
   perfilBool: undefined,
   searchBool: undefined,
-  img: undefined,
-  type: string,
+  img: string,
+  type: undefined,
 };
 Header.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string.isRequired,
   perfilBool: PropTypes.bool,
   searchBool: PropTypes.bool,
-  img: PropTypes.symbol,
+  img: PropTypes.bool,
 
 };
 export default Header;
