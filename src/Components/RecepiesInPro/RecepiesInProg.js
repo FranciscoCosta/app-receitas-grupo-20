@@ -97,7 +97,7 @@ function RecipesInProg({ page, pages, history }) {
               key={ index }
               data-testid={ `${index}-ingredient-step` }
             >
-              {`${ingredient[1]}${value[1]}`}
+              { `${ingredient[1]} - `}  <span className='tags__item-inst'>{`${value[1]}` }</span>
               <input
                 type="checkbox"
                 id={ ingredient[1] }

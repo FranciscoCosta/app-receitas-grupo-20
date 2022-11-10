@@ -34,7 +34,7 @@ function Instructions({ ItemIngridients, page, Item }) {
             key={ `${value[1]}-${index}` }
             data-testid={ `${index}-ingredient-name-and-measure` }
           >
-            { `${ingredient[1]} - ${value[1]}` }
+            { `${ingredient[1]} - `}  <span className='tags__item-inst'>{`${value[1]}` }</span>
           </p>
         )) }
       </div>

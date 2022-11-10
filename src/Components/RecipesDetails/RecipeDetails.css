@@ -1,6 +1,7 @@
-.DetailsMeals, .DetailsDrinks {
+.DetailsMeals,
+.DetailsDrinks {
   backdrop-filter: blur(5px);
-  background: url('../../images/bg123.png');
+  background: url("../../images/bg123.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -131,6 +132,13 @@ span {
   font-weight: 600;
 }
 
+.tags__item-inst {
+  font-size: 1rem;
+  border-radius: 50rem;
+  background-color: #2ee59d;
+  padding: 5px 20px;
+}
+
 .btn-start-recepie {
   background-color: #2fc18c;
   border: none;
@@ -216,8 +224,7 @@ span {
   text-align: center;
 }
 
-@media screen and ( max-width : 800px ) {
-
+@media screen and (max-width: 800px) {
   .Item-Details {
     width: 100%;
   }
